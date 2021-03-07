@@ -1,6 +1,4 @@
 node_modules/
-events/
-commands/
 package-lock.json
 join.lua
 test
