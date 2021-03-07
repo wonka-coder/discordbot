@@ -43,7 +43,7 @@ exports.run = (client, message, args) => {
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             kickUser.kick(reason).catch(err => {
                 if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-                message.reply("gelukt!")
+                message.reply("gelukt!"), kickUser.send("je bent gekickt!")
             });
 
             message.reply(embed);
