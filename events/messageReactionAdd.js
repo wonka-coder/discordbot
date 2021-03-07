@@ -14,13 +14,5 @@ if (reaction.message.channel.id === '798664612878876702') {
   }
 }
 if (user) return message.reply("Kan de gebruiker niet vinden.");
-     
-var dmembed = new discord.MessageEmbed()
-.setTitle("welkom!")
-.setColor("#ff0000")
-.setThumbnail(user.user.displayAvatarURL)
-.setFooter(message.member.displayName, message.author.displayAvatarURL)
-.setTimestamp()
-.setDescription(`welkom in ***Dutch Defence Corporation***! `);
-user.send(dmembed)   
+user.send("hoi")
 }
