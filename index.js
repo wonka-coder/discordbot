@@ -3,7 +3,6 @@ const botConfig = require("./botconfig.json");
  
 const client = new discord.Client();
 const fs = require('fs');
-client.login(process.env.token);
 client.commands = new discord.Collection();
 client.aliases = new discord.Collection();
 client.events = new discord.Collection();
@@ -52,3 +51,4 @@ client.on("message", async message => {
  
 });
 
+client.login(process.env.token);
