@@ -5,19 +5,28 @@ const client = new discord.Client();
 
 exports.run = (client, message, args) => {
  
-    if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("sorry jij kan dit niet");
-
-    if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Geen perms");
+  if (!message.member.roles.cache.some(role => role.name === 'SUPER ADMIN PERM')) return message.react("❌"), message.reply("je hebt de rol: ``SUPER ADMIN PERM`` niet!").then (message =>{
+    message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
     if (!args[2]) return message.reply("geen gebruiker opgeven.");
-
-    if (!args[3]) return message.reply("Je hebt een te korte reden geschrijven of je hebt geen gebruiker tagged! Maak jouw reden 2 woorden of langer!");
 
     var User = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 
     var reason = args.slice(2).join(" ");
 
     if (!User) return message.reply("Kan de gebruiker niet vinden.");
+
+    if (!User) return message.reply("Kan de gebruiker niet vinden.");
+     
+    var dmembed = new discord.MessageEmbed()
+    .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
+    .setColor("#ff0000")
+    .setThumbnail(User.user.displayAvatarURL)
+    .setFooter(message.member.displayName, message.author.displayAvatarURL)
+    .setTimestamp()
+    .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
+    User.send(dmembed)  
+
 
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")

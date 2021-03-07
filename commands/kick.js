@@ -5,7 +5,7 @@ const client = new discord.Client();
 
 exports.run = (client, message, args) => {
  
-    if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``perms`` niet!").then (message =>{
+    if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``MODERATOR PERM`` niet!").then (message =>{
       message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
     if (!args[0]) return message.reply("Geen gebruiker opgegeven.");

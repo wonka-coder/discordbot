@@ -8,7 +8,7 @@ exports.run = async client  => {
     client.user.setActivity("Den Helder", {type: "WATCHING"});
 var logEmbed = new discord.MessageEmbed()
 .setTitle("ready! | Den helder")
-.setColor("#ff0000")
+.setColor("#50a832")
 .setDescription(`ready!`)
 .setTimestamp(); 
 var logsChannel = client.channels.cache.get("801837510820757514")
