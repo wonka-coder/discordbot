@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
-
+        kickUser.send("je bent gekickt!")
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
         .setAuthor("Gelieve te reageren binnen 30 sec.")
@@ -43,7 +43,7 @@ exports.run = (client, message, args) => {
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             kickUser.kick(reason).catch(err => {
                 if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-                message.reply("gelukt!"), kickUser.send("je bent gekickt!")
+                message.reply("gelukt!")
             });
 
             message.reply(embed);
