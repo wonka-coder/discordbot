@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
     .setThumbnail(kickUser.user.displayAvatarURL)
     .setFooter(message.member.displayName, message.author.displayAvatarURL)
     .setTimestamp()
-    .setDescription(` je bent voor de volgende reden gekickt: *${reason}* \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
+    .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
     kickUser.send(dmembed)   
 
 
