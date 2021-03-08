@@ -4,7 +4,7 @@ exports.run = async (client, message, member ) => {
     var logEmbed = new discord.MessageEmbed()
 .setTitle("New memeber | DDC")
 .setColor("#50a832")
-.setDescription(`member: <@${member.name}>`)
+.setDescription(`member: ${member}`)
 .setTimestamp(); 
 var logsChannel = client.channels.cache.get("801837510820757514")
 logsChannel.send(logEmbed);
