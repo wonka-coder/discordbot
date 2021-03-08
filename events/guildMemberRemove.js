@@ -5,6 +5,6 @@ exports.run = async (client, message ) => {
     let memberCount = myGuild.memberCount;
     setInterval(function () {
        var memberCountChannel = client.channels.cache.get("817375067012202496");
-       memberCountChannel.setName(` ${memberCount} members!`);
+       memberCountChannel.setName(`${memberCount} members!`);
     }, 1000);
 }
