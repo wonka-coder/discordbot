@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args) => {
         .setTitle("banned logs | DDC")
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
-        .setDescription(`${warnUse} is verbannen van ***Dutch Defence Corporation*** voor het hebben van teveel warns!`)
+        .setDescription(`${warnUser} is verbannen van ***Dutch Defence Corporation*** voor het hebben van teveel warns!`)
         var logsChannel = client.channels.cache.get("801837510820757514")
 logsChannel.send(banembed);
     }
