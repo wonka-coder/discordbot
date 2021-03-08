@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
   
       var reason = args.slice(2).join(" ");
   
-      if (!warnkUser) return message.reply("Kan de gebruiker niet vinden.");
+      if (!warnUser) return message.reply("Kan de gebruiker niet vinden.");
 
     if (!warns[warnUser.id]) warns[warnUser.id] = {
         warns: 0
