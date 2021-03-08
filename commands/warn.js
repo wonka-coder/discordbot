@@ -4,23 +4,18 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
 
-    // !warn spelerNaam redenen hier.
 
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``MODERATOR PERM`` niet!").then (message =>{
         message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
-
-    if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
-
-    if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``MODERATOR PERM`` niet!").then (message =>{
-        message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
-
-    var warnUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-
-    var reason = args.slice(1).join(" ");
-
-    if (!warnUser) return message.reply("Kan de gebruiker niet vinden.");
-
-    if (warnUser.hasPermission("MANAGE_MESSAGES")) return message.reply("Sorry je kunt deze gebruiker niet warnen");
+  
+      if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
+  
+  
+      var warnUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  
+      var reason = args.slice(2).join(" ");
+  
+      if (!warnkUser) return message.reply("Kan de gebruiker niet vinden.");
 
     if (!warns[warnUser.id]) warns[warnUser.id] = {
         warns: 0
