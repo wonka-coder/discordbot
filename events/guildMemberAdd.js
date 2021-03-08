@@ -1,6 +1,6 @@
 const discord = require("discord.js")
 
-exports.run = async (client, message, guildMemberAdd ) => { 
+exports.run = async (client, message, member ) => { 
     var logEmbed = new discord.MessageEmbed()
 .setTitle("New memeber | DDC")
 .setColor("#50a832")
