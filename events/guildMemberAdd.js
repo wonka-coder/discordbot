@@ -13,5 +13,5 @@ logsChannel.send(logEmbed);
     setInterval(function () {
        var memberCountChannel = client.channels.cache.get("817375067012202496");
        memberCountChannel.setName(`${memberCount} members!`);
-    }, 1000);
+    }, 10);
 }
