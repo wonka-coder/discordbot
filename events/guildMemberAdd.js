@@ -8,7 +8,7 @@ exports.run = async (client, message, guildMemberAdd ) => {
     .setThumbnail(kickUser.user.displayAvatarURL)
     .setFooter(message.member.displayName, message.author.displayAvatarURL)
     .setTimestamp()
-    .setDescription(`Welkom! je kan je rol krijgen door naar het kanaal **verify** te gaan & dan op het '✅' te drukken! veel plezier!`);
+    .setDescription(`Welkom!! je kan je rol krijgen door naar het kanaal **verify** te gaan & dan op het '✅' te drukken! veel plezier!`);
     user.send(dmembed)   
 
     var logEmbed = new discord.MessageEmbed()
