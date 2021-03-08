@@ -11,8 +11,6 @@ module.exports.run = async (client, message, args) => {
 
     if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
 
-    if (!args[1]) return message.reply("Gelieve een redenen op te geven.");
-
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``MODERATOR PERM`` niet!").then (message =>{
         message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
