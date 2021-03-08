@@ -36,10 +36,10 @@ exports.run = (client, message, args) => {
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
         .setAuthor("Gelieve te reageren binnen 30 sec.")
-        .setDescription(`Wil je ${User} kicken?`);
+        .setDescription(`Wil je ${User} verbannen?`);
 
     let filter = m => m.author.id === message.author.id
-    message.channel.send(`Wil je ${User} kicken van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
+    message.channel.send(`Wil je ${User} verbannen van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
       message.channel.awaitMessages(filter, {
           max: 1,
           time: 30000,
