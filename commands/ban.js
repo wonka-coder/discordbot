@@ -13,10 +13,6 @@ exports.run = (client, message, args) => {
     var User = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 
     var reason = args.slice(2).join(" ");
-
-    if (!User) return message.reply("Kan de gebruiker niet vinden.");
-
-    if (!User) return message.reply("Kan de gebruiker niet vinden.");
      
     var dmembed = new discord.MessageEmbed()
     .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
