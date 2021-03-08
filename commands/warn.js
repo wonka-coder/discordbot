@@ -41,17 +41,7 @@ module.exports.run = async (client, message, args) => {
     if (!channel) return;
 
     channel.send(embed);
-
-    if (warns[warnUser.id].warns == 3) {
-
-        var embed = new discord.MessageEmbed()
-            .setColor("#ff0000")
-            .setDescription("PAS OP")
-            .addField("Bericht", "Je hebt nog een waarschuwing voor een ban.");
-
-        message.channel.send(embed);
-
-    } else if (warns[warnUser.id].warns == 6) {
+ if (warns[warnUser.id].warns == 6) {
         message.guild.member(warnUser).ban(reason);
         var banembed = new discord.MessageEmbed()
         .setTitle("banned logs | DDC")
