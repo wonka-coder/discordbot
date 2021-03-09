@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
     .setFooter(message.member.displayName, message.author.displayAvatarURL)
     .setTimestamp()
     .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
-    kickUser.send(dmembed)
+    kickUser.send(dmembed), message.delete({ timeout: 10 });
 
 
 
@@ -37,12 +37,6 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
-        message.channel.send(embed), message.delete({ timeout: 10 });
-
-    var embedPrompt = new discord.MessageEmbed()
-        .setColor("GREEN")
-        .setAuthor("Gelieve te reageren binnen 30 sec.")
-        .setDescription(`Wil je ${kickUser} kicken?`);
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${kickUser} kicken van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
