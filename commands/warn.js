@@ -3,7 +3,6 @@ const fs = require("fs");
 const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
-    message.delete();
 
 
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM' !").then (message =>{
@@ -68,6 +67,7 @@ module.exports.run = async (client, message, args) => {
         var logsChannel = client.channels.cache.get("801837510820757514")
 logsChannel.send(banembed);
     }
+        message.delete();
 }
 
 module.exports.help = {
