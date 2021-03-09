@@ -36,7 +36,8 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
         **Gekickt door:** ${message.author}
-        **Redenen: ** ${reason}`), message.delete({ timeout: 10 });
+        **Redenen: ** ${reason}`);
+        message.channel.send(embed), message.delete({ timeout: 10 });
 
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
