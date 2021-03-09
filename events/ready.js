@@ -7,9 +7,9 @@ exports.run = async client  => {
     console.log(`${client.user.username} is online`)
     client.user.setActivity("Den Helder", {type: "WATCHING"});
 var logEmbed = new discord.MessageEmbed()
-.setTitle("ready! | Den helder")
+.setTitle("Restart | Den helder")
 .setColor("#50a832")
-.setDescription(`ready!`)
+.setDescription(`Restart`)
 .setTimestamp();
 var logsChannel = client.channels.cache.get("801837510820757514")
 logsChannel.send(logEmbed);

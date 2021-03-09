@@ -1,14 +1,15 @@
 const discord = require("discord.js");
 
- 
+
 const client = new discord.Client();
 
 exports.run = (client, message, args) => {
- 
+
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("je hebt de rol: ``MODERATOR PERM`` niet!").then (message =>{
       message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
-    if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
+    if (!args[0]) return message.react("❌"), message.reply("Geen gebruiker opgegeven.").then (message =>{
+      message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
 
     var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -16,7 +17,7 @@ exports.run = (client, message, args) => {
     var reason = args.slice(2).join(" ");
 
     if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
-     
+
     var dmembed = new discord.MessageEmbed()
     .setTitle("Je bent gekickt uit ***Dutch Defence Corporation***!")
     .setColor("#ff0000")
@@ -24,7 +25,7 @@ exports.run = (client, message, args) => {
     .setFooter(message.member.displayName, message.author.displayAvatarURL)
     .setTimestamp()
     .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
-    kickUser.send(dmembed)   
+    kickUser.send(dmembed)
 
 
 
@@ -36,7 +37,7 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
-        
+
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
         .setAuthor("Gelieve te reageren binnen 30 sec.")
@@ -67,10 +68,9 @@ exports.run = (client, message, args) => {
         .catch(collected => {
             message.channel.send('command verlopen');
         });
-        
+
     })
 }
   exports.config = {
     aliases: ["KICK", "KICK_MEMBER"]
   }
-  

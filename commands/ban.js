@@ -1,19 +1,21 @@
 const discord = require("discord.js");
 
- 
+
 const client = new discord.Client();
 
 exports.run = (client, message, args) => {
- 
+
   if (!message.member.roles.cache.some(role => role.name === 'SUPER ADMIN PERM')) return message.react("❌"), message.reply("je hebt de rol: ``SUPER ADMIN PERM`` niet!").then (message =>{
     message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
-    if (!args[2]) return message.reply("geen gebruiker opgeven.");
+    if (!args[0]) return message.react("❌"), message.reply("Geen gebruiker opgegeven.").then (message =>{
+      message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
+
 
     var User = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 
     var reason = args.slice(2).join(" ");
-     
+
     var dmembed = new discord.MessageEmbed()
     .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
     .setColor("#ff0000")
@@ -21,7 +23,7 @@ exports.run = (client, message, args) => {
     .setFooter(message.member.displayName, message.author.displayAvatarURL)
     .setTimestamp()
     .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
-    User.send(dmembed)  
+    User.send(dmembed)
 
 
     var embed = new discord.MessageEmbed()
@@ -63,10 +65,9 @@ exports.run = (client, message, args) => {
         .catch(collected => {
             message.channel.send('command verlopen');
         });
-        
+
     })
 }
   exports.config = {
     aliases: ["BAN", "BAN_MEMBER"]
   }
-  
