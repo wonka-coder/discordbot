@@ -46,7 +46,7 @@ exports.run = (client, message, args) => {
             banMember.send(dmEmbed).then(() =>
             banMember.ban().catch(err => {
               if (err) return message.channel.send(`error : ${err}`);
-            }
+            });
             message.reply(embed);
           } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
              message.reply("kick geanuleerd!");
