@@ -4,6 +4,7 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
 
+
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM' !").then (message =>{
         message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
@@ -31,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("#ff8000")
         .setFooter("warn embed | Dutch Defence Corporation ")
         .setTimestamp()
-        .setDescription(`You have been warned! Check the information below! check your DMs for the reason!  \n \n **warned user:** ${warnUser}  `)
+        .setDescription(`You have been warned! Check the information below! check your DMs for the reason!  \n \n **warned user:** ${warnUser}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
         message.channel.send(embed)
 
@@ -66,8 +67,6 @@ module.exports.run = async (client, message, args) => {
         var logsChannel = client.channels.cache.get("801837510820757514")
 logsChannel.send(banembed);
     }
-    if (message.content == '!warn') {
-     message.delete({ timeout: 3000 });
 }
 
 module.exports.help = {
