@@ -34,7 +34,6 @@ exports.run = (client, message, args) => {
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
         .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
-        kickUser.send(dmembed), message.delete({ timeout: 10 });
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${kickUser} kicken van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
@@ -46,8 +45,9 @@ exports.run = (client, message, args) => {
         .then(message => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-            kickUser.kick(reason).catch(err => {
-                if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
+            kickUser.send(dmembed).then(() =>
+            kickUser.kick(User, { dagen:1, Reden: reason})).catch(err => {
+              if (err) return message.channel.send(`error : ${err}`);
             });
 
             message.reply(embed);
