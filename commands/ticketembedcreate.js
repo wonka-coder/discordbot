@@ -8,9 +8,9 @@ module.exports.run = async (client, message, args) => {
     if(message && message.deletable) message.delete().catch(e => {});
 
     let embed = new discord.MessageEmbed()
-    .setTitle(`den helder | ticket systeem!`)
+    .setTitle(`DDC | application!`)
     .setColor("#42f598")
-    .setDescription(`Hello, welcome to the channel #application. \n In this channel you can find information about the applications. All forms that have something to do with Den Helder will be placed here.
+    .setDescription(`Hello, welcome to the channel ${message.channel}. \n In this channel you can find information about the applications. All forms that have something to do with Den Helder will be placed here.
 
 We do this because a lot of tickets are made about the applications. We indicate not to create tickets related to "staff applications". \n
 **-----------------------------------------**
