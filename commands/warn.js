@@ -38,7 +38,7 @@ module.exports.run = async (client, message, args) => {
         var dmembed = new discord.MessageEmbed()
             .setTitle("you have been warned! | DDC")
             .setColor("#ff8000")
-            .setFooter("warn embed | Dutch Defence Corporation ")
+            .setFooter("This message was sent automatically because you received a warn in Dutch Defence Corporation. You can block the bot if you wish to stop receiving these messages ")
             .setTimestamp()
             .setDescription(`You have been warned! \n \n **warned user:** ${warnUser} \n \n **reason:** ${reason}  `)
             .addField("**number of warnings:**", warns[warnUser.id].warns);
