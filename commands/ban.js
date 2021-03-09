@@ -32,7 +32,9 @@ exports.run = (client, message, args) => {
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
         .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
-        User.send(dmembed), message.delete({ timeout: 10 });
+
+          banMember.send(dmembed).then(() =>
+          banMember.ban()
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${User} verbannen van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
