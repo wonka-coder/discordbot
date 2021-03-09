@@ -6,10 +6,10 @@ const client = new discord.Client();
 exports.run = (client, message, args) => {
   if(message && message.deletable) message.delete().catch(e => {});
 
-  if (!message.member.roles.cache.some(role => role.name === 'SUPER ADMIN PERM')) return message.react("❌"), message.reply("je hebt de rol: ``SUPER ADMIN PERM`` niet!").then (message =>{
+  if (!message.member.roles.cache.some(role => role.name === 'SUPER ADMIN PERM')) return message.react("❌"), message.reply("you don't have the role:: ``SUPER ADMIN PERM``!").then (message =>{
     message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
-    if (!args[0]) return message.react("❌"), message.reply("Geen gebruiker opgegeven.").then (message =>{
+    if (!args[0]) return message.react("❌"), message.reply("no user specified"").then (message =>{
       message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
 
@@ -22,20 +22,24 @@ exports.run = (client, message, args) => {
         .setThumbnail(User.user.displayAvatarURL)
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
-        .setDescription(`** Gekickt:** ${User} (${User.id})
-        **Gekickt door:** ${message.author}
-        **Redenen: ** ${reason}`);
+        .setDescription(`** banned:** ${User} (${User.id})
+        **banned by:** ${message.author}
+        **reason: ** ${reason}`);
+        var channel = message.member.guild.channels.cache.get("801837510820757514");
 
+        if (!channel) return;
+
+        channel.send(embed);
         var dmembed = new discord.MessageEmbed()
-        .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
+        .setTitle("You have been banned from ***Dutch Defence Corporation***!")
         .setColor("#ff0000")
         .setThumbnail(User.user.displayAvatarURL)
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
-        .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
+        .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
 
     let filter = m => m.author.id === message.author.id
-    message.channel.send(`Wil je ${User} verbannen van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
+    message.channel.send(`Do you want ${User} banned from the server for ${reason} \`YES\` / \`NO\``).then(() => {
       message.channel.awaitMessages(filter, {
           max: 1,
           time: 30000,
@@ -50,13 +54,13 @@ exports.run = (client, message, args) => {
             });
             message.reply(embed);
           } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
-             message.reply("kick geanuleerd!");
+             message.reply("ban canceled!");
           } else {
-            message.channel.send(`Command gecanceld. `)
+            message.channel.send(`command stopped`)
           }
         })
         .catch(collected => {
-            message.channel.send('command verlopen');
+            message.channel.send('time over');
         });
 
     })
