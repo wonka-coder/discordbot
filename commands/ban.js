@@ -46,7 +46,7 @@ exports.run = (client, message, args) => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             banMember.send(dmEmbed).then(() =>
-            banMember.ban().catch(err => console.log(err))
+            banMember.ban().catch(err => console.log(err));
 
             message.reply(embed);
           } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
