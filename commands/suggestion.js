@@ -45,9 +45,6 @@ exports.run = async (client, message, args) => {
 
 
 };
-
-}
-
 }
   exports.config = {
     aliases: ["suggestion", "everyone"]
