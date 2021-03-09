@@ -35,15 +35,14 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`You have been warned! Check the information below! check your DMs for the reason!`)
         .addField(`**warned user:**${warnUser}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
+        message.channel.send(embed)
 
         var dmembed = new discord.MessageEmbed()
             .setTitle("you have been warned! | DDC")
             .setColor("#ff8000")
             .setFooter("warn embed | Dutch Defence Corporation ")
             .setTimestamp()
-            .setDescription(`You have been warned!`)
-            .addField(`**reason:** ${reason}`)
-            .addField(`**warned user:**${warnUser}`)
+            .setDescription(`You have been warned! \n **warned user:** ${warnUser} \n **reason:** ${reason} \n **warned user:**${warnUser}  `)
             .addField("**number of warnings:**", warns[warnUser.id].warns);
             warnUser.send(dmembed);
 
