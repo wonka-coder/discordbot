@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     .setAuthor(`${message.member.displayName}`, message.author.displayAvatarURL({dynamic: true, format: 'png'}))
     .setColor('#030bfc')
     .setDescription(`${reason}`)
-    .setFooter("DDC")
+    .setFooter(`DDC | suggestion of ${message.author} `)
 
     var failedSuggestion = new discord.MessageEmbed()
     .setTitle("suggestion")
