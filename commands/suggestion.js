@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
     .setTitle("suggestion")
     .setColor("RED")
     .setDescription(`${args[0]}`)
-    .setFooter("DDC")
+    .setFooter(`DDC | suggestion of ${message.author} `)
 
 
     message.delete()
