@@ -3,7 +3,7 @@ const discord = require("discord.js");
 
 const client = new discord.Client();
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
 
     var buggie = "818825270765158430";
     let reason = args.slice(0).join(" ")
