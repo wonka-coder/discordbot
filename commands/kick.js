@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM'!").then (message =>{
       message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
-      if (!args[0]) return message.react("❌"), message.reply("no user specified").then (message =>{
+      if (!args[0]) return message.react("❌"), message.reply("no user specified!").then (message =>{
           message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
 
