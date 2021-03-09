@@ -3,7 +3,8 @@ const fs = require("fs");
 const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
-  message.delete(10);
+  if (message.content == '!warn') {
+  message.delete(1000);
 
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM' !").then (message =>{
         message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
