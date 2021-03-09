@@ -18,17 +18,6 @@ exports.run = (client, message, args) => {
 
     if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
 
-    var dmembed = new discord.MessageEmbed()
-    .setTitle("Je bent gekickt uit ***Dutch Defence Corporation***!")
-    .setColor("#ff0000")
-    .setThumbnail(kickUser.user.displayAvatarURL)
-    .setFooter(message.member.displayName, message.author.displayAvatarURL)
-    .setTimestamp()
-    .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
-    kickUser.send(dmembed), message.delete({ timeout: 10 });
-
-
-
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")
         .setThumbnail(kickUser.user.displayAvatarURL)
@@ -37,6 +26,15 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
+
+        var dmembed = new discord.MessageEmbed()
+        .setTitle("Je bent gekickt uit ***Dutch Defence Corporation***!")
+        .setColor("#ff0000")
+        .setThumbnail(kickUser.user.displayAvatarURL)
+        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setTimestamp()
+        .setDescription(` je bent voor de volgende reden gekickt: **${reason}** \n Je bent vrij voor altijd terug de joinen! dit kan door deze link te kopieren! *https://discord.gg/kr7Z7v7Nwm* `);
+        kickUser.send(dmembed), message.delete({ timeout: 10 });
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${kickUser} kicken van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
@@ -50,7 +48,6 @@ exports.run = (client, message, args) => {
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             kickUser.kick(reason).catch(err => {
                 if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-                message.reply("gelukt!")
             });
 
             message.reply(embed);
