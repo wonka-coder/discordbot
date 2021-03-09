@@ -43,8 +43,8 @@ exports.run = (client, message, args) => {
         .then(message => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-            banMember.send(dmEmbed).then(() =>
-            banMember.ban().catch(err => {
+            User.send(dmEmbed).then(() =>
+            User.ban().catch(err => {
               if (err) return message.channel.send(`error : ${err}`);
             });
             message.reply(embed);
