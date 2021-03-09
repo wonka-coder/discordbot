@@ -5,7 +5,7 @@ const MIN_INTERVAL = 3 * 1000;
 
 exports.run = async client  => {
     console.log(`${client.user.username} is online`)
-    client.user.setActivity("Den Helder", {type: "WATCHING"});
+    client.user.setActivity("Dutch Defence Corporation", {type: "WATCHING"});
 var logEmbed = new discord.MessageEmbed()
 .setTitle("Restart | Den helder")
 .setColor("#50a832")
