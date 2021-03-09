@@ -3,9 +3,8 @@ const fs = require("fs");
 const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
-  if(message && message.deletable) message.delete().catch(e => {});
 
-    if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM'!").then (message =>{
+    if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM' !").then (message =>{
         message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
       if (!args[0]) return message.react("❌"), message.reply("no user specified").then (message =>{
@@ -34,12 +33,12 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .setDescription(`You have been warned! Check the information below! check your DMs for the reason!  \n \n **warned user:** ${warnUser}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
-        message.channel.send(embed);
+        message.channel.send(embed), message.delete({ timeout: 10 });
 
         var dmembed = new discord.MessageEmbed()
             .setTitle("you have been warned! | DDC")
             .setColor("#ff8000")
-            .setFooter("This message was sent automatically because you received a warn in Dutch Defence Corporation. You can block the bot if you wish to stop receiving these messages ")
+            .setFooter("This message was sent automatically because you received a warn in Dutch Defence Corporation. You can block  if you wish to stop receiving these messages ")
             .setTimestamp()
             .setDescription(`You have been warned! \n \n **warned user:** ${warnUser} \n \n **reason:** ${reason}  `)
             .addField("**number of warnings:**", warns[warnUser.id].warns);
