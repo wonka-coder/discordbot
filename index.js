@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 const botConfig = require("./botConfig.json");
- 
+
 const client = new discord.Client();
 const fs = require('fs');
 client.commands = new discord.Collection();
@@ -30,12 +30,12 @@ fs.readdir("./commands/", (err, files) => {
 
 
 
-  
 
 
- 
+
+
 client.on("message", async message => {
- 
+
     if(message.author.bot) return;
 
     if(message.channel.type === "dm") return;
@@ -45,10 +45,10 @@ client.on("message", async message => {
   let messageArray = message.content.split(" ");
 
   let command = messageArray[0];
-  
+
   let arguments = messageArray.slice(1);
- 
- 
+
+
 });
 
 client.login(process.env.token);
