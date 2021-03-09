@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .setDescription(`You have been warned! Check the information below! check your DMs for the reason!  \n \n **warned user:** ${warnUser}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
-        message.channel.send(embed)
+        message.channel.send(embed), message.delete({ timeout: 3000 });
 
         var dmembed = new discord.MessageEmbed()
             .setTitle("you have been warned! | DDC")
