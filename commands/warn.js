@@ -50,7 +50,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("#ff0000")
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
-        .setDescription(`**warned user:** ${warnUser}`)
+        .setDescription(`**warned user:** ${warnUser} \n **reason:** ${reason} \n **warned by:** ${message.author}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
 
     var channel = message.member.guild.channels.cache.get("801837510820757514");
