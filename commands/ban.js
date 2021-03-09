@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")
         .setThumbnail(User.user.displayAvatarURL)
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setFooter("his message was sent automatically because you received a ban in Dutch Defence Corporation. You can block the bot if you wish to stop receiving these messages")
         .setTimestamp()
         .setDescription(`** banned:** ${User} (${User.id})
         **banned by:** ${message.author}
