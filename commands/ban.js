@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
 
     var User = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 
-    var reason = args.slice(2).join(" ");
+    var reason = args.slice(1).join(" ");
 
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")
