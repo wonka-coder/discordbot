@@ -32,6 +32,8 @@ exports.run = (client, message, args) => {
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
         .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
+          banMember.send(dmEmbed).then(() =>
+          banMember.ban().catch(err => console.log(err))
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${User} verbannen van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
@@ -43,9 +45,8 @@ exports.run = (client, message, args) => {
         .then(message => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-            User.ban().catch(err => {
-                if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-            });
+            banMember.send(dmEmbed).then(() =>
+            banMember.ban().catch(err => console.log(err))
 
             message.reply(embed);
           } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
