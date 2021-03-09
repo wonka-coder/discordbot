@@ -46,7 +46,7 @@ exports.run = (client, message, args) => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             kickUser.send(dmembed).then(() =>
-            kickUser.kick(User, { dagen:1, Reden: reason})).catch(err => {
+            kickUser.kick(kickUser, { dagen:1, Reden: reason})).catch(err => {
               if (err) return message.channel.send(`error : ${err}`);
             });
 
