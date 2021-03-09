@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${User} (${User.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
-        
+
         var dmembed = new discord.MessageEmbed()
         .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
         .setColor("#ff0000")
@@ -46,7 +46,6 @@ exports.run = (client, message, args) => {
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             User.ban().catch(err => {
                 if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-                message.reply("gelukt!")
             });
 
             message.reply(embed);
