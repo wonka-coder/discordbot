@@ -45,10 +45,10 @@ module.exports.run = async (client, message, args) => {
             warnUser.send(dmembed);
 
     var logs = new discord.MessageEmbed()
-        .setColor("#ff0000")
+        .setColor("#ffbb00")
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
         .setTimestamp()
-        .setDescription(`**warned user:** ${warnUser} \n **reason:** ${reason} \n **warned by:** ${message.author}`)
+        .setDescription(`**warned user:** ${warnUser} \n\n **warned by:** ${message.author} \n\n **reason:** ${reason}`)
         .addField("**number of warnings:**", warns[warnUser.id].warns);
 
     var channel = message.member.guild.channels.cache.get("801837510820757514");
