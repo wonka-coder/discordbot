@@ -15,17 +15,6 @@ exports.run = (client, message, args) => {
     var User = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 
     var reason = args.slice(2).join(" ");
-
-    var dmembed = new discord.MessageEmbed()
-    .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
-    .setColor("#ff0000")
-    .setThumbnail(User.user.displayAvatarURL)
-    .setFooter(message.member.displayName, message.author.displayAvatarURL)
-    .setTimestamp()
-    .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
-    User.send(dmembed)
-
-
     var embed = new discord.MessageEmbed()
         .setColor("#ff0000")
         .setThumbnail(User.user.displayAvatarURL)
@@ -34,11 +23,6 @@ exports.run = (client, message, args) => {
         .setDescription(`** Gekickt:** ${User} (${User.id})
         **Gekickt door:** ${message.author}
         **Redenen: ** ${reason}`);
-
-    var embedPrompt = new discord.MessageEmbed()
-        .setColor("GREEN")
-        .setAuthor("Gelieve te reageren binnen 30 sec.")
-        .setDescription(`Wil je ${User} verbannen?`);
 
     let filter = m => m.author.id === message.author.id
     message.channel.send(`Wil je ${User} verbannen van de server voor ${reason} \`YES\` / \`NO\``).then(() => {
@@ -52,7 +36,14 @@ exports.run = (client, message, args) => {
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
             User.ban().catch(err => {
                 if (err) return message.channel.send(`er is een fout opgetreed! error: **${err}** `);
-                message.reply("gelukt!")
+                var dmembed = new discord.MessageEmbed()
+                .setTitle("Je bent verbannen uit ***Dutch Defence Corporation***!")
+                .setColor("#ff0000")
+                .setThumbnail(User.user.displayAvatarURL)
+                .setFooter(message.member.displayName, message.author.displayAvatarURL)
+                .setTimestamp()
+                .setDescription(` je bent voor de volgende reden verbannen: **${reason}** \n Je kan een unban krijgen door op de het onderstaande linkje te drukken! \n *https://forms.gle/souGHuLT83G1URVu5*`);
+                User.send(dmembed)
             });
 
             message.reply(embed);
