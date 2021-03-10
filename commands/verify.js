@@ -5,6 +5,8 @@ const client = new discord.Client();
 
 module.exports.run = async (client, message, args) => {
 
+if(message && message.deletable) message.delete().catch(e => {});
+
 var verify = "798533797205377065";
 
   let msg = await message.channel.send("Awaiting Prompt") // Send a message for awaiting.
