@@ -5,6 +5,8 @@ const client = new discord.Client();
 
 module.exports.run = async(bot, message, args) => {
 
+if(message && message.deletable) message.delete().catch(e => {});
+
   if (!message.member.roles.cache.some(role => role.name === 'Head Developer')) return message.react("❌"), message.reply("you don't have the role:'TRIAL MODERATOR PERM !").then (message =>{
       message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
@@ -24,7 +26,7 @@ module.exports.run = async(bot, message, args) => {
         const data = suggestieEmbed.embeds[0];
         const acceptEmbed = new discord.MessageEmbed()
         .setAuthor(data.author.name, data.author.iconURL)
-        .setTitle('This won’t be added into the game.')
+        .setTitle('❌ | This won’t be added into the game.')
         .setDescription(data.description)
         .setColor("#ff0400")
         .setFooter("DDC | suggestions")
