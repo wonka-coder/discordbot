@@ -14,7 +14,5 @@ if(!commandfile) return;
   }
   if (message.channel.id === "798533810584551464") {
 message.reply(" the tickets are closed! | de tickets zijn dicht!")
-
-          }
   }
 }
