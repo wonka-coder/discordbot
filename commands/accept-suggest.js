@@ -21,7 +21,7 @@ if(message && message.deletable) message.delete().catch(e => {});
     try{
         const suggestionChannel = message.guild.channels.cache.get('818825270765158430')
         const suggestieEmbed = await suggestionChannel.messages.fetch(messageID)
-        var channel01 = message.guild.channels.cache.find(channel => channel.id === "818825270765158430")
+        var channel01 = message.guild.channels.cache.find(channel => channel.id === "819229264083419137")
 
 
         const data = suggestieEmbed.embeds[0];
