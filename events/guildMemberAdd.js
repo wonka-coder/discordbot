@@ -1,8 +1,18 @@
 const discord = require("discord.js")
 
+const client = new discord.Client();
+
 exports.run = async (client, message, member, author ) => {
 
   var embed = new discord.MessageEmbed()
+      .setColor("#ff0000")
+      .setTitle("messages log | DDC")
+      .setFooter("DDC | Logs")
+      .setTimestamp()
+      .setDescription('memeber joined:**' + member.user.username + '');
+      var logsChannel = client.channels.cache.get("801837510820757514")
+      logsChannel.send(embed);
+
     myGuild = client.guilds.cache.get("796297446786334720");
     let memberCount = myGuild.memberCount;
     setInterval(function () {
