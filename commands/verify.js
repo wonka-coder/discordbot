@@ -33,13 +33,11 @@ var verify = "798533797205377065";
 .setDescription("❓ What's your ROBLOX username?")
 .setFooter("This prompt will cancel after 200 seconds.")
 .setTimestamp()
- msg.channel.send(robloxEmbed).then (message =>{
-   message.delete({ timeout: 10000 })}) //Send the first Embed
+ msg.channel.send(robloxEmbed) //Send the first Embed
 
  collector.on("collect", m => {
    if(m.content === 'cancel' || m.content === 'Cancel') {
-     message.channel.send('**Cancelled prompt.**').then (message =>{
-       message.delete({ timeout: 10000 })};
+     message.channel.send('**Cancelled prompt.**')
      return
    } //Collector1 End
    rbx.getIdFromUsername(m.content).then(foundId => { //Get the userID from username
@@ -51,8 +49,7 @@ var verify = "798533797205377065";
 .setDescription("Hello **" + m.content + "**, to verify that you are that user. Please put this in your blurb, or status. \n `" + newString + "`\n\nSay **done** when complete.\nSay **cancel** to cancel. ")
 .setFooter("Player ID is " + foundId)
 .setTimestamp()
- msg.channel.send(foundUsername).then (message =>{
-   message.delete({ timeout: 10000 })} //The part where it asks you to add the Code
+ msg.channel.send(foundUsername) //The part where it asks you to add the Code
        const collector2 = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }) // Collector2
 collector2.on('collect', async mag => {
       if(mag.content.includes('done') & mag.content.includes("done") && mag.author.id == message.author.id) {
@@ -62,8 +59,7 @@ collector2.on('collect', async mag => {
 .setDescription("Fetching your emojis, please wait as I am going to fetch it.")
 .setFooter("Fetching..")
 .setTimestamp()
-         msg.channel.send(fetchingBlurb).then (message =>{
-           message.delete({ timeout: 10000 })} //Checks the Blurb / Status
+         msg.channel.send(fetchingBlurb) //Checks the Blurb / Status
         setTimeout(function() { //Timeout Stuff
 rbx.getStatus(foundId).then(status => { //Check status
             console.log(status) //Console.log the status
@@ -75,23 +71,20 @@ rbx.getStatus(foundId).then(status => { //Check status
 .setDescription("You have now been verified! Please wait shortly as you are going to recieve the Verified role.")
 .setFooter("Verifying..")
 .setTimestamp()
-               msg.channel.send(verified).then (message =>{
-                 message.delete({ timeout: 10000 })} // Sent if user has put code
+               msg.channel.send(verified) // Sent if user has put code
               message.member.roles.add(message.guild.roles.cache.find(r => r.name == "✔️")) // Add the users role
               message.member.setNickname(m.content) // Sets the users nickname
 
 
                } else {
-               message.channel.send("Can not find the emojis.").then (message =>{
-                 message.delete({ timeout: 10000 })} // Sent if user has not put code
+               message.channel.send("Can not find the emojis.") // Sent if user has not put code
                }
           })
         }, 5000)
       })
     } else
         if(mag.content.includes('cancel') && mag.author.id == message.author.id) {
-          message.channel.send('**Cancelled prompt.**').then (message =>{
-            message.delete({ timeout: 10000 })} // If user says `Cancel`
+          message.channel.send('**Cancelled prompt.**') // If user says `Cancel`
                                return
         }
     })
