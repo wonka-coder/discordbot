@@ -9,7 +9,7 @@ exports.run = async (client, message, member ) => {
       .setTimestamp()
       .setDescription(`** join members:**${message.author}`);
       var logsChannel = client.channels.cache.get("801837510820757514")
-      logsChannel.send(logEmbed);
+      logsChannel.send(embed);
 
     myGuild = client.guilds.cache.get("796297446786334720");
     let memberCount = myGuild.memberCount;
