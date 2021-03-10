@@ -39,7 +39,7 @@ var verify = "798533797205377065";
  collector.on("collect", m => {
    if(m.content === 'cancel' || m.content === 'Cancel') {
      message.channel.send('**Cancelled prompt.**').then (message =>{
-       message.delete({ timeout: 10000 })}
+       message.delete({ timeout: 10000 })};
      return
    } //Collector1 End
    rbx.getIdFromUsername(m.content).then(foundId => { //Get the userID from username
