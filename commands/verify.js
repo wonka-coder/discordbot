@@ -9,7 +9,9 @@ var verify = "798533797205377065";
 
   let msg = await message.channel.send("Awaiting Prompt") // Send a message for awaiting.
 
- if(verify === message.channel.id){
+ if(verify === message.channel.id){} else {
+             return message.channel.send("You cannot send suggestions in this channel.")
+         }
 
   function makeid() {
     var text = "";
@@ -78,16 +80,11 @@ rbx.getStatus(foundId).then(status => { //Check status
           })
         }, 5000)
       })
-      } else
+    } else
         if(mag.content.includes('cancel') && mag.author.id == message.author.id) {
           message.channel.send('**Cancelled prompt.**') // If user says `Cancel`
                                return
         }
-
-      } else {
-          return message.channel.send("You cannot send suggestions in this channel.")
-      }
-
     })
  })
 })
