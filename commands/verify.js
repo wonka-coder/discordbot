@@ -84,7 +84,7 @@ rbx.getStatus(foundId).then(status => { //Check status
       })
     } else
         if(mag.content.includes('cancel') && mag.author.id == message.author.id) {
-          message.channel.send('**Cancelled prompt.**') // If user says `Cancel`
+          message.channel.send('***Cancelled prompt.***') // If user says `Cancel`
                                return
         }
     })
