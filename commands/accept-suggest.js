@@ -1,5 +1,9 @@
 const discord = require("discord.js");
 
+
+const client = new discord.Client();
+
+
 module.exports.run = async(client, message, args) => {
 
   if (!message.member.roles.cache.some(role => role.name === 'Head Developer')) return message.react("❌"), message.reply("you don't have the role:'TRIAL MODERATOR PERM !").then (message =>{
