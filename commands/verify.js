@@ -10,7 +10,7 @@ var verify = "798533797205377065";
   let msg = await message.channel.send("Awaiting Prompt") // Send a message for awaiting.
 
  if(verify === message.channel.id){} else {
-             return message.channel.send("You cannot send suggestions in this channel.")
+             return message.channel.send("You can not verify here! ")
          }
 
   function makeid() {
