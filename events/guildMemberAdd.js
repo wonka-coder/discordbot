@@ -4,7 +4,6 @@ exports.run = async (client, message, member ) => {
 
   var embed = new discord.MessageEmbed()
       .setColor("#ff0000")
-      .setThumbnail(User.user.displayAvatarURL)
       .setTitle("messages log | Den helder")
       .setFooter("DDC | Logs")
       .setTimestamp()
