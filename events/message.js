@@ -1,5 +1,7 @@
-const prefix = "!"
+const prefix = "?"
+const discord = require("discord.js")
 
+const client = new discord.Client();
  exports.run = async(client, message) => {
   if (message.author.bot) return;
   if (message.content.startsWith(prefix)) {
