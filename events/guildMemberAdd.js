@@ -3,7 +3,7 @@ const discord = require("discord.js")
 const client = new discord.Client();
 
 exports.run = async (client, message, member, author ) => {
-  const channel = member.guild.channels.cache.get(ch => ch.name === 'welcome');
+  const channel = message.member.guild.channels.cache.get("798533795711156264");
 
 if (!channel) return;
 
