@@ -4,11 +4,11 @@ exports.run = async (client, message, member ) => {
 
   var embed = new discord.MessageEmbed()
       .setColor("#ff0000")
-      .setTitle("messages log | Den helder")
+      .setTitle("messages log | DDC")
       .setFooter("DDC | Logs")
       .setTimestamp()
       .setDescription(`** join members:**${message.author}`);
-      var channel = message.member.guild.channels.cache.get("801837510820757514");
+      var channel = message.member.channels.guild.cache.get("801837510820757514");
 
       if (!channel) return;
 
