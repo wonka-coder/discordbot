@@ -66,7 +66,7 @@ rbx.getStatus(foundId).then(status => { //Check status
 .setFooter("Verifying..")
 .setTimestamp()
                msg.channel.send(verified) // Sent if user has put code
-              message.member.roles.add(message.guild.roles.find(r => r.name == "✔️")) // Add the users role
+              message.member.roles.add(message.guild.roles.cache.find(r => r.name == "✔️")) // Add the users role
               message.member.setNickname(m.content) // Sets the users nickname
 
 
