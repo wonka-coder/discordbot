@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 
   const filter = m => m.author.id === message.author.id
   const collector = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }) //This is the collector to collect the Message for getting the username.
-  const robloxEmbed = new Discord.MessageEmbed()
+  const robloxEmbed = new discord.MessageEmbed()
 .setColor("BLUE")
 .setTitle("Prompt")
 .setDescription("❓ What's your ROBLOX username?")
@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
    rbx.getIdFromUsername(m.content).then(foundId => { //Get the userID from username
      const Id = foundId
      const newString = makeid() + makeid() + makeid() + makeid() + makeid() //Emoji thing
-   const foundUsername = new Discord.MessageEmbed()
+   const foundUsername = new discord.MessageEmbed()
 .setColor("BLUE")
 .setTitle("Prompt")
 .setDescription("Hello **" + m.content + "**, to verify that you are that user. Please put this in your blurb, or status. \n `" + newString + "`\n\nSay **done** when complete.\nSay **cancel** to cancel. ")
@@ -47,7 +47,7 @@ module.exports.run = async (client, message, args) => {
        const collector2 = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }) // Collector2
 collector2.on('collect', async mag => {
       if(mag.content.includes('done') & mag.content.includes("done") && mag.author.id == message.author.id) {
-        const fetchingBlurb = new Discord.MessageEmbed()
+        const fetchingBlurb = new discord.MessageEmbed()
 .setColor("BLUE")
 .setTitle("Prompt")
 .setDescription("Fetching your emojis, please wait as I am going to fetch it.")
@@ -59,7 +59,7 @@ rbx.getStatus(foundId).then(status => { //Check status
             console.log(status) //Console.log the status
           rbx.getBlurb(foundId).then(blurb => { // Checks the blurb
             if(status.includes(newString) || blurb.includes(newString)) { // If code is in blurb procceds with operation
-              const verified = new Discord.MessageEmbed()
+              const verified = new discord.MessageEmbed()
 .setColor("GREEN")
 .setTitle("Prompt")
 .setDescription("You have now been verified! Please wait shortly as you are going to recieve the Verified role.")
