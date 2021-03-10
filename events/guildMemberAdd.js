@@ -8,7 +8,7 @@ exports.run = async (client, message, member ) => {
       .setFooter("DDC | Logs")
       .setTimestamp()
       .setDescription(`** join members:**${message.author}`);
-      var channel = message.member.channels.guild.cache.get("801837510820757514");
+      var channel = message.member.channel.guild.cache.get("801837510820757514");
 
       if (!channel) return;
 
