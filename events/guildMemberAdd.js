@@ -8,11 +8,8 @@ exports.run = async (client, message, member ) => {
       .setFooter("DDC | Logs")
       .setTimestamp()
       .setDescription(`** join members:**${message.author}`);
-      var channel = message.member.channels.guild.cache.get("801837510820757514");
-
-      if (!channel) return;
-
-      channel.send(embed);
+      var logsChannel = client.channels.cache.get("801837510820757514")
+      logsChannel.send(logEmbed);
 
     myGuild = client.guilds.cache.get("796297446786334720");
     let memberCount = myGuild.memberCount;

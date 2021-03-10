@@ -2,7 +2,7 @@ const discord = require("discord.js")
 
 exports.run = async (client, message, messageDelete ) => {
     var logEmbed = new discord.MessageEmbed()
-    .setTitle("messages log | Den helder")
+    .setTitle("messages log | DDC")
     .setColor("#ff0000")
     .setDescription(`message deleted: **${message.cleanContent}** \n \n  message of: **${message.author}** \n \n message deleted from: **${message.channel}**`)
     .setTimestamp();
