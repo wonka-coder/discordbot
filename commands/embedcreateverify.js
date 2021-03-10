@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     let embed = new discord.MessageEmbed()
     .setTitle(`DDC | Verify`)
     .setColor("#42f598")
-    .setDescription(`Hello, welcome to ***Dutch Defence Corporation***! If you want to proceed to the Discord please do "!Verify" & follow the steps! *** You need a roblox account to continue! *** `);
+    .setDescription(`Hello, welcome to ***Dutch Defence Corporation***! If you want to proceed to the Discord please do "?Verify" & follow the steps! *** You need a roblox account to continue! *** `);
     message.channel.send(embed).then(m => {
       m.react('✅');
     });
