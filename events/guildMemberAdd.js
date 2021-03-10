@@ -7,7 +7,7 @@ exports.run = async (client, message, member, author ) => {
       .setTitle("messages log | DDC")
       .setFooter("DDC | Logs")
       .setTimestamp()
-      .setDescription('new member:', member.nickname);
+      .setDescription('memeber joined:**' + member.user.username + ');
       var logsChannel = client.channels.cache.get("801837510820757514")
       logsChannel.send(embed);
 
