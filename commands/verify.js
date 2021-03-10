@@ -26,7 +26,7 @@ var verify = "798533797205377065";
   }
 
   const filter = m => m.author.id === message.author.id
-  const collector = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }).then (message =>{ message.delete({ timeout: 100000 })}); //This is the collector to collect the Message for getting the username.
+  const collector = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }); //This is the collector to collect the Message for getting the username.
   const robloxEmbed = new discord.MessageEmbed()
 .setColor("BLUE")
 .setTitle("Prompt")
@@ -51,7 +51,7 @@ var verify = "798533797205377065";
 .setTimestamp()
  msg.channel.send(foundUsername).then (message =>{
      message.delete({ timeout: 100000 })}); //The part where it asks you to add the Code
-       const collector2 = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }).then (message =>{ message.delete({ timeout: 100000 })}); // Collector2
+       const collector2 = message.channel.createMessageCollector(filter, { max: '1', maxMatches: "1", time: "200000" }); // Collector2
 collector2.on('collect', async mag => {
       if(mag.content.includes('done') & mag.content.includes("done") && mag.author.id == message.author.id) {
         const fetchingBlurb = new discord.MessageEmbed()
