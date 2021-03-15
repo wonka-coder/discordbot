@@ -15,10 +15,17 @@ var memeUps = respMeme[0].data.children[0].data.ups;
 var memeDowns = respMeme[0].data.children[0].data.downs;
 
 var embedMeme = new discord.MessageEmbed()
+<<<<<<< HEAD
   .setTitle(`${memeTitle}`)
   .setUrl(`${memeUrl}`)
   .setImage(`${memeFoto}`)
   .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `);
+=======
+     .setTitle(`${memeTitle}`)
+     .setUrl(`${memeUrl}`)
+     .setImage(`${memeFoto}`)
+     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `)
+>>>>>>> 279d4ab9040697f040132a80a00ac0cefa66812a
 
 message.channel.send(embedMeme);
 
