@@ -9,7 +9,7 @@ if(message && message.deletable) message.delete().catch(e => {});
 
 var verify = "798533797205377065";
 
-  let msg = await message.channel.send("Awaiting Prompt") // Send a message for awaiting.
+  let msg = await message.channel.send("Awaiting Prompt").then(msg => { msg.delete(100) }) .catch("error"); // Send a message for awaiting.
 
  if(verify === message.channel.id){} else {
              return message.channel.send("You can not verify here! ")
@@ -46,7 +46,7 @@ var verify = "798533797205377065";
    const foundUsername = new discord.MessageEmbed()
 .setColor("BLUE")
 .setTitle("Prompt")
-.setDescription("Hello **" + m.content + "**, to verify that you are that user. Please put this in your blurb, or status. \n `" + newString + "`\n\nSay **done** when complete.\nSay **cancel** to cancel. ")
+.setDescription("Hello **" + m.content + "**, to verify that you are that user. Please put this in your blurb, or status. \n `" + newString + "`\n\nSay **done** when complete.\nSay **cancel** to cancel. \n   ")
 .setFooter("Player ID is " + foundId)
 .setTimestamp()
  msg.channel.send(foundUsername) //The part where it asks you to add the Code
