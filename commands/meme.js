@@ -7,18 +7,18 @@ exports.run = (client, message, args) => {
 
 fetch('https://www.reddit.com/r/memes/random/.json').then(resp => resp.json()).then(respMeme => {
 
-var permaL = respMeme[0].data.children[0].data.permaLink;
-var memeU = `https://www.reddit.com${permaL}`;
-var memeF = respMeme[0].data.children[0].data.url;
-var memeT = respMeme[0].data.children[0].data.title;
+var permaLink = respMeme[0].data.children[0].data.permaLink;
+var memeUrl = `https://www.reddit.com${permaLink}`;
+var memeFoto = respMeme[0].data.children[0].data.url;
+var memeTitle = respMeme[0].data.children[0].data.title;
 var memeUps = respMeme[0].data.children[0].data.ups;
 var memeDowns = respMeme[0].data.children[0].data.downs;
 
 var embedMeme = new discord.MessageEmbed()
-.setTitle(`${memeT}`)
-.setUrl(`${memeU}`)
-.setImage(`${memeF}`)
-.setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `)
+     .setTitle(`${memeTitle}`)
+     .setUrl(`${memeUrl}`)
+     .setImage(`${memeFoto}`)
+     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `)
 
 message.channel.send(embedMeme);
 
