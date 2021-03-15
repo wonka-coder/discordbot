@@ -1,11 +1,11 @@
 const discord = require("discord.js");
 const fetch = require("node-fetch")
- 
+
 const client = new discord.Client();
 
 exports.run = (client, message, args) => {
 
-fetch('https://www.reddir.com/r/memes/random.json').then(resp => resp.json()).then(respMeme => {
+fetch('https://www.reddit.com/r/memes/random/.json').then(resp => resp.json()).then(respMeme => {
 
 var permaL = respMeme[0].data.children[0].data.permaLink;
 var memeU = `https://www.reddit.com${permaLink}`;
