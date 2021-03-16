@@ -13,14 +13,13 @@ var memeFoto = respMeme[0].data.children[0].data.url;
 var memeTitle = respMeme[0].data.children[0].data.title;
 var memeUps = respMeme[0].data.children[0].data.ups;
 var memeDowns = respMeme[0].data.children[0].data.downs;
-var memeUser = respMeme[0].data.children[0].data.name;
 
 var embedMeme = new discord.MessageEmbed()
      .setColor('RANDOM')
      .setTitle(`${memeTitle}`)
      .setURL(`${memeUrl}`)
      .setImage(`${memeFoto}`)
-     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} \n post by : ${memeUser} `);
+     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns}`);
 
 message.channel.send(embedMeme);
 
