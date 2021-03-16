@@ -15,6 +15,7 @@ var memeUps = respMeme[0].data.children[0].data.ups;
 var memeDowns = respMeme[0].data.children[0].data.downs;
 
 var embedMeme = new discord.MessageEmbed()
+     .setColor('random')
      .setTitle(`${memeTitle}`)
      .setURL(`${memeUrl}`)
      .setImage(`${memeFoto}`)
