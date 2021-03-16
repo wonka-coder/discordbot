@@ -18,7 +18,7 @@ var embedMeme = new discord.MessageEmbed()
      .setTitle(`${memeTitle}`)
      .setUrl(`${memeUrl}`)
      .setImage(`${memeFoto}`)
-     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `)
+     .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `);
 
 message.channel.send(embedMeme);
 
