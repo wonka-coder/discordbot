@@ -16,7 +16,7 @@ var memeDowns = respMeme[0].data.children[0].data.downs;
 
 var embedMeme = new discord.MessageEmbed()
      .setTitle(`${memeTitle}`)
-     .setUrl(`${memeUrl}`)
+     .setURL(`${memeUrl}`)
      .setImage(`${memeFoto}`)
      .setDescription(`👍 ${memeUps} \n 👎 ${memeDowns} `);
 
