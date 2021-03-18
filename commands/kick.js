@@ -3,7 +3,7 @@ const discord = require("discord.js");
 
 const client = new discord.Client();
 
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   if(message && message.deletable) message.delete().catch(e => {});
 
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM'!").then (message =>{
