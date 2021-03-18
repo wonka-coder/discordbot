@@ -25,11 +25,9 @@ module.exports.run = async (client, message, args) => {
 
                   args.shift()
                   target.send("You are kicked out of ***Dutch Defence Corporation*** | Discord invite link :  ")
-                  if (target) {
-                    target.kick('user was being bad')
-                      .then(() => { message.reply('Successfully kicked.' })
-                      .catch(err => {err});
-                  }
+                  target.kick()
+                            .then(() => console.log(`Kicked ${member.displayName}`))
+                            .catch(console.error);
               const guildId = message.guild.id
               const userId = target.id
               const reason = args.slice(1).join(' ')
