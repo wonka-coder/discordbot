@@ -3,6 +3,13 @@ const discord = require("discord.js");
 
 const client = new discord.Client();
 
+
+const mongo = require('.././mongo')
+const warnSchema = require('.././schemas/kick-schema')
+
+
+module.expor
+
 module.exports.run = async (client, message, args) => {
   if(message && message.deletable) message.delete().catch(e => {});
 
