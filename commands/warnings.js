@@ -27,10 +27,7 @@ module.exports.run = async (client, message, args) => {
        var reply = new discord.MessageEmbed()
        .setTitle(`Previous warnings of <@${userId}>`)
        .setDescription(`${author}`)
-
-
-
-       message.reply(reply)
+       message.channel.send(reply)
      } finally {
        mongoose.connection.close()
      }
