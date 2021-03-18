@@ -49,7 +49,7 @@ module.exports.run = async (client, message, args) => {
                   if (err) return message.channel.send(`error : ${err}`);
                 });
 
-           message.reply(embed);
+           message.reply("Successfully");
          } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
             message.reply("kicked canceled");
          } else {
