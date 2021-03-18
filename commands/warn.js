@@ -18,6 +18,8 @@ module.exports.run = async (client, message, args) => {
 
       if (!user) return message.reply("user cannot be found!");
 
+      if(warnings === null) warnings = 0;
+
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
 
           if(warnings === 3) {
