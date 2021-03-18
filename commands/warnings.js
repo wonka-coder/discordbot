@@ -5,6 +5,7 @@ const client = new discord.Client();
 
 
 const mongo = require('.././mongo')
+const kickSchema = require('.././schemas/kick-schema')
 const warnSchema = require('.././schemas/warn-schema')
 module.exports.run = async (client, message, args) => {
   const target = message.mentions.users.first()
@@ -22,6 +23,14 @@ module.exports.run = async (client, message, args) => {
          guildId,
          userId,
        })
+
+       await mongo().then(async (mongoose) => {
+         try {
+           const results2 = await kickSchema.findOne({
+             guildId,
+             userId,
+           })
+
        let reply = `Previous warnings for <@${userId}>:\n\n`
 
              for (const warning of results.warnings) {
@@ -32,6 +41,18 @@ module.exports.run = async (client, message, args) => {
                ).toLocaleDateString()} for "${reason}"\n\n`
              }
     message.reply(reply)
+
+    let reply2 = `Previous kicks of <@${userId}>:\n\n`
+
+          for (const kick of results2.kicks) {
+            const { author, timestamp, reason } = warning
+
+            reply += `By ${author} on ${new Date(
+              timestamp
+            ).toLocaleDateString()} for "${reason}"\n\n`
+          }
+ message.reply(reply2)
+
      } finally {
        mongoose.connection.close()
      }
