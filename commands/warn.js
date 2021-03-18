@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
       }
 
           args.shift()
-
+          message.reply("Successfully!")
       const guildId = message.guild.id
       const userId = target.id
       const reason = args.slice(1).join(' ')

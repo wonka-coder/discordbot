@@ -31,6 +31,7 @@ module.exports.run = async (client, message, args) => {
                  timestamp
                ).toLocaleDateString()} for "${reason}"\n\n`
              }
+    message.reply(reply)
      } finally {
        mongoose.connection.close()
      }
