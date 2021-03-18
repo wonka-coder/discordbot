@@ -22,9 +22,9 @@ module.exports.run = async (client, message, args) => {
                 message.reply('Please specify someone to kick')
                 return
               }
-              
+
               let filter = m => m.author.id === message.author.id
-              message.channel.send(`Do you want ${kickUser} kick the server for ${reason} \`YES\` / \`NO\``).then(() => {
+              message.channel.send(`Do you want ${target} kick the server for ${reason} \`YES\` / \`NO\``).then(() => {
                 message.channel.awaitMessages(filter, {
                     max: 1,
                     time: 30000,
@@ -33,12 +33,11 @@ module.exports.run = async (client, message, args) => {
                   .then(message => {
                     message = message.first()
                     if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-                      kickUser.send(dmembed).then(() =>
-                      kickUser.kick(kickUser, { dagen:1, Reden: reason})).catch(err => {
+                      target.kick(target, { dagen:1, Reden: reason})).catch(err => {
                         if (err) return message.channel.send(`error : ${err}`);
                       });
 
-                      message.reply(embed);
+                      message.reply("Successfully!");
                     } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
                        message.reply("kicked canceled");
                     } else {
