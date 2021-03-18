@@ -22,12 +22,15 @@ module.exports.run = async (client, message, args) => {
          guildId,
          userId,
        })
-       for (const warning of results.warnings) {
+       let reply = `Previous warnings for <@${userId}>:\n\n`
+
+             for (const warning of results.warnings) {
                const { author, timestamp, reason } = warning
-       var reply = new discord.MessageEmbed()
-       .setTitle(`Previous warnings of <@${userId}>`)
-       .setDescription(`${author}`)
-       message.channel.send(reply)
+
+               reply += `By ${author} on ${new Date(
+                 timestamp
+               ).toLocaleDateString()} for "${reason}"\n\n`
+             }
      } finally {
        mongoose.connection.close()
      }
