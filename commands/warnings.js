@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
                  timestamp
                ).toLocaleDateString()} for "${reason}"\n\n`
              }
-    message.reply(reply)
+    message.reply(reply);
 
     let reply2 = `Previous kicks of <@${userId}>:\n\n`
 
@@ -51,14 +51,14 @@ module.exports.run = async (client, message, args) => {
               timestamp
             ).toLocaleDateString()} for "${reason}"\n\n`
           }
- message.reply(reply2)
+ message.reply(reply2);
 
      } finally {
        mongoose.connection.close()
      }
    })
+ }
  });
-})
 }
 
 
