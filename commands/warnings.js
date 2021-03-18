@@ -23,15 +23,12 @@ module.exports.run = async (client, message, args) => {
          userId,
        })
 
-       let reply = `Previous warnings for <@${userId}>:\n\n`
-
-       for (const warning of results.warnings) {
-         const { author, timestamp, reason } = warning
-
-         reply += `By ${author} on ${new Date(
+       var reply = new discord.MessageEmbed()
+       .setTitle(`Previous warnings of <@${userId}>`)
+       .setDescription(for (const warning of results.warnings) {const { author, timestamp, reason } = warning `${author} on ${new Date(
            timestamp
-         ).toLocaleDateString()} for "${reason}"\n\n`
-       }
+         ).toLocaleDateString()} for "${reason}"\n\n``)
+
 
        message.reply(reply)
      } finally {
