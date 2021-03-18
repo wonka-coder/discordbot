@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 
       var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-      var reason = args.slice(2).join(" ");
+      var reason = args.slice(1).join(" ");
 
       if (!user) return message.reply("user cannot be found!");
 
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
 
           if(warnings === null) {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1)
-            user.send(`You have been warned in **${message.guild.name}** for ${reason}`)
+            user.send(`You have been warned in **${message.guild.name}** for ${reason} aantal **${warnings}*`)
             await message.channel.send(`You warned **${message.mentions.users.first().username}** for ${reason}`)
           } else if(warnings !== null) {
               db.add(`warnings_${message.guild.id}_${user.id}`, 1)
