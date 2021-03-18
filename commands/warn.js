@@ -1,7 +1,6 @@
 const discord = require("discord.js");
 const fs = require("fs");
-const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
-
+var db = require('quick.db')
 module.exports.run = async (client, message, args) => {
 
     if (!message.member.roles.cache.some(role => role.name === 'TRIAL MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'TRIAL MODERATOR PERM !").then (message =>{
@@ -17,55 +16,24 @@ module.exports.run = async (client, message, args) => {
 
       if (!warnUser) return message.reply("user cannot be found!");
 
-    if (!warns[warnUser.id]) warns[warnUser.id] = {
-        warns: 0
-    };
 
-    warns[warnUser.id].warns++;
+      let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
 
-    fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-        if (err) console.log(err);
-    });
-    var embed = new discord.MessageEmbed()
-        .setTitle("User warned | DDC")
-        .setColor("#ff8000")
-        .setFooter("warn embed | Dutch Defence Corporation ")
-        .setTimestamp()
-        .setDescription(`You have been warned! Check the information below! check your DMs for the reason!  \n \n **warned user:** ${warnUser}`)
-        .addField("**number of warnings:**", warns[warnUser.id].warns);
-        message.channel.send(embed), message.delete({ timeout: 10 });
+      if(warnings === 3) {
+        return message.channel.send(`${message.mentions.users.first().username} already reached his/her limit with 3 warnings`)
+      }
 
-        var dmembed = new discord.MessageEmbed()
-            .setTitle("you have been warned! | DDC")
-            .setColor("#ff8000")
-            .setFooter("This message was sent automatically because you received a warn in Dutch Defence Corporation. You can block  if you wish to stop receiving these messages ")
-            .setTimestamp()
-            .setDescription(`You have been warned! \n \n **warned user:** ${warnUser} \n \n **reason:** ${reason}  `)
-            .addField("**number of warnings:**", warns[warnUser.id].warns);
-            warnUser.send(dmembed);
+      if(warnings === null) {
+  db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+  user.send(`You have been warned in **${message.guild.name}** for ${reason}`)
+  await message.channel.send(`You warned **${message.mentions.users.first().username}** for ${reason}`)
+} else if(warnings !== null) {
+    db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+   user.send(`You have been warned in **${message.guild.name}** for ${reason}`)
+  await message.channel.send(`You warned **${message.mentions.users.first().username}** for ${reason}`)
+}
 
-    var logs = new discord.MessageEmbed()
-        .setColor("#ffbb00")
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
-        .setTimestamp()
-        .setDescription(`**warned user:** ${warnUser} \n\n **warned by:** ${message.author} \n\n **reason:** ${reason}`)
-        .addField("**number of warnings:**", warns[warnUser.id].warns);
 
-    var channel = message.member.guild.channels.cache.get("801837510820757514");
-
-    if (!channel) return;
-
-    channel.send(logs);
- if (warns[warnUser.id].warns == 6) {
-        message.guild.member(warnUser).ban(reason);
-        var banembed = new discord.MessageEmbed()
-        .setTitle("banned logs | DDC")
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
-        .setTimestamp()
-        .setDescription(`${warnUser} has been banned from ***Dutch Defence Corporation*** for having too many warns!`)
-        var logsChannel = client.channels.cache.get("801837510820757514")
-logsChannel.send(banembed);
-    }
 }
 
 module.exports.help = {
