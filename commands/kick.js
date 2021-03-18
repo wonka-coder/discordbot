@@ -28,9 +28,12 @@ module.exports.run = async (client, message, args) => {
               const userId = target.id
               const reason = args.slice(1).join(' ')
               target.send("You are kicked out of ***Dutch Defence Corporation*** | Discord invite link :  ")
-                target.kick({reason: reason})
+              if (target.kickable) {
+                  target.kick()
+                    message.reply('That user has been kicked')
+                  }
 
-              const kick = {
+              const kicked = {
                 author: message.member.user.tag,
                 timestamp: new Date().getTime(),
                 reason,
@@ -47,7 +50,7 @@ module.exports.run = async (client, message, args) => {
                       guildId,
                       userId,
                       $push: {
-                        kicks: kick,
+                        kicks: kicked,
                       },
                     },
                     {
