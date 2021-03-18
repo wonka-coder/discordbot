@@ -24,13 +24,11 @@ module.exports.run = async (client, message, args) => {
               }
 
                   args.shift()
-                  target.send("You are kicked out of ***Dutch Defence Corporation*** | Discord invite link :  ")
-                  target.kick()
-                            .then(() => console.log(`Kicked ${member.displayName}`))
-                            .catch(console.error);
               const guildId = message.guild.id
               const userId = target.id
               const reason = args.slice(1).join(' ')
+              target.send("You are kicked out of ***Dutch Defence Corporation*** | Discord invite link :  ")
+                target.kick({reason: reason})
 
               const kick = {
                 author: message.member.user.tag,
