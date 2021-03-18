@@ -9,7 +9,7 @@ if(message && message.deletable) message.delete().catch(e => {});
 
 var verify = "798533797205377065";
 
-  let msg = await message.channel.send("Awaiting Prompt").then(msg => { msg.delete(100) }) .catch("error"); // Send a message for awaiting.
+  let msg = await message.channel.send("Awaiting Prompt"); // Send a message for awaiting.
 
  if(verify === message.channel.id){} else {
              return message.channel.send("You can not verify here! ")
