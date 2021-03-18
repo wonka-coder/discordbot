@@ -12,11 +12,11 @@ module.exports.run = async (client, message, args) => {
           message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
 
-      var warnUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
       var reason = args.slice(2).join(" ");
 
-      if (!warnUser) return message.reply("user cannot be found!");
+      if (!user) return message.reply("user cannot be found!");
 
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
 
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
           }
 
 
-        } 
+        }
 
 
 module.exports.help = {
