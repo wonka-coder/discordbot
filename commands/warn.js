@@ -20,9 +20,6 @@ module.exports.run = async (client, message, args) => {
 
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
 
-      if(warnings === null) warnings = 0;
-
-
           if(warnings === 3) {
             return message.channel.send(`${message.mentions.users.first().username} already reached his/her limit with 3 warnings`)
           }
