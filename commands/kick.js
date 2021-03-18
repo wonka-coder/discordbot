@@ -5,7 +5,7 @@ const client = new discord.Client();
 
 
 const mongo = require('.././mongo')
-const warnSchema = require('.././schemas/kick-schema')
+const kickSchema = require('.././schemas/kick-schema')
 
 
 module.expor
