@@ -31,5 +31,5 @@ message.channel.send(embedMeme);
 
 }
 exports.config = {
-  aliases: ["memes", "meme"]
+  aliases: ["memes", "memes"]
 }
