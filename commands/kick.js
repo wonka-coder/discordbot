@@ -28,6 +28,7 @@ module.exports.run = async (client, message, args) => {
               }
 
                   args.shift()
+                  target.kick()
                   message.reply("Successfully!")
                   target.send("You are kicked out of ***Dutch Defence Corporation*** | Discord invite link :  ")
               const guildId = message.guild.id
