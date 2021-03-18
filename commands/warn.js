@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
 
       const guildId = message.guild.id
       const userId = target.id
-      const reason = args.slice(2).join(' ')
+      const reason = args.slice(1).join(' ')
 
       const warning = {
         author: message.member.user.tag,
