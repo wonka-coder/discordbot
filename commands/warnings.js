@@ -5,7 +5,6 @@ const client = new discord.Client();
 
 
 const mongo = require('.././mongo')
-const kickSchema = require('.././schemas/kick-schema')µ
 const warnSchema = require('.././schemas/warn-schema')
 module.exports.run = async (client, message, args) => {
   callback: async (message, arguments, text) => {
