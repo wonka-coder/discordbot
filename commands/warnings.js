@@ -38,4 +38,4 @@ module.exports.run = async (client, message, args) => {
        mongoose.connection.close()
      }
    })
- },
+ };
