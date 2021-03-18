@@ -12,6 +12,7 @@
     "discord.js": "^12.5.1",
     "discordjs-logger": "^2.0.0",
     "noblox.js": "^4.8.4",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "quick.db": "^7.1.3"
   }
 }
