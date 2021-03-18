@@ -1,22 +1,44 @@
 const discord = require("discord.js");
-const fs = require("fs");
-const db = require('quick.db')
 
 
+const client = new discord.Client();
+
+
+const mongo = require('.././mongo')
+const warnSchema = require('.././schemas/warn-schema')
 module.exports.run = async (client, message, args) => {
-  const user = message.mentions.members.first() || message.author
+  const target = message.mentions.users.first()
+   if (!target) {
+     message.reply('Please specify a user to load the warnings for.')
+     return
+   }
 
+   const guildId = message.guild.id
+   const userId = target.id
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
+   await mongo().then(async (mongoose) => {
+     try {
+       const results = await warnSchema.findOne({
+         guildId,
+         userId,
+       })
 
+       let reply = `Previous warnings for <@${userId}>:\n\n`
 
-  if(warnings === null) warnings = 0;
+       for (const warning of results.warnings) {
+         const { author, timestamp, reason } = warning
 
+         reply += `By ${author} on ${new Date(
+           timestamp
+         ).toLocaleDateString()} for "${reason}"\n\n`
+       }
 
-  message.channel.send(`${user} have **${warnings}** warning(s)`)
-
-
-}
+       message.reply(reply)
+     } finally {
+       mongoose.connection.close()
+     }
+   })
+ },
 
 
 module.exports.help = {

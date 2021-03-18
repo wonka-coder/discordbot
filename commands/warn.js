@@ -1,41 +1,55 @@
 const discord = require("discord.js");
-const fs = require("fs");
-const db = require('quick.db')
+
+
+const client = new discord.Client();
+
+
+const mongo = require('.././mongo')
+const warnSchema = require('.././schemas/warn-schema')
 
 
 module.exports.run = async (client, message, args) => {
+  const target = message.mentions.users.first()
+      if (!target) {
+        message.reply('Please specify someone to warn.')
+        return
+      }
 
-    if (!message.member.roles.cache.some(role => role.name === 'TRIAL MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'TRIAL MODERATOR PERM !").then (message =>{
-        message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
+          args.shift()
 
-      if (!args[0]) return message.react("❌"), message.reply("no user specified!").then (message =>{
-          message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
+      const guildId = message.guild.id
+      const userId = target.id
+      const reason = args.slice(2).join(' ')
 
+      const warning = {
+        author: message.member.user.tag,
+        timestamp: new Date().getTime(),
+        reason,
+      }
 
-      var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-
-      var reason = args.slice(1).join(" ");
-
-      if (!user) return message.reply("user cannot be found!");
-
-      let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
-
-          if(warnings === 3) {
-            return message.channel.send(`${message.mentions.users.first().username} already reached his/her limit with 3 warnings`)
-          }
-
-          if(warnings === null) {
-            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
-            user.send(`You have been warned in **${message.guild.name}** for ${reason} aantal **${warnings}*`)
-            await message.channel.send(`You warned **${message.mentions.users.first().username}** for ${reason}`)
-          } else if(warnings !== null) {
-              db.add(`warnings_${message.guild.id}_${user.id}`, 1)
-             user.send(`You have been warned in **${message.guild.name}** for ${reason}`)
-            await message.channel.send(`You warned **${message.mentions.users.first().username}** for ${reason}`)
-          }
-
-
+      await mongo().then(async (mongoose) => {
+        try {
+          await warnSchema.findOneAndUpdate(
+            {
+              guildId,
+              userId,
+            },
+            {
+              guildId,
+              userId,
+              $push: {
+                warnings: warning,
+              },
+            },
+            {
+              upsert: true,
+            }
+          )
+        } finally {
+          mongoose.connection.close()
         }
+      })
+    },
 
 
 module.exports.help = {
