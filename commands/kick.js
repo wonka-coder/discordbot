@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
                   .then(message => {
                     message = message.first()
                     if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-                      target.kick(target, { dagen:1, Reden: reason})).catch(err => {
+                      target.kick(target, { dagen:1, Reden: reason}).catch(err => {
                         if (err) return message.channel.send(`error : ${err}`);
                       });
 
