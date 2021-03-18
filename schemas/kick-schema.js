@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const  kickSchema = mongoose.Schema({
+const kickSchema = mongoose.Schema({
   guildId: {
     type: String,
     required: true,
