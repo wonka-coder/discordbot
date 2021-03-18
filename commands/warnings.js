@@ -42,24 +42,13 @@ module.exports.run = async (client, message, args) => {
              }
     message.reply(reply);
 
-    let reply2 = `Previous kicks of <@${userId}>:\n\n`
-
-          for (const kick of results2.kicks) {
-            const { author, timestamp, reason } = warning
-
-            reply += `By ${author} on ${new Date(
-              timestamp
-            ).toLocaleDateString()} for "${reason}"\n\n`
-          }
- message.reply(reply2);
-
      } finally {
        mongoose.connection.close()
      }
    })
  }
 })
-}
+
 
 
 
