@@ -19,7 +19,7 @@ message.reply(" the tickets are closed! | de tickets zijn dicht!"), message.dele
   }
   if (message.channel.id === "798533810584551464") {
     var embed = new discord.MessageEmbed()
-        .setTitle("ticket closed! | DDC")
+        .setTitle("ticket closed!! | DDC")
         .setColor("#ff8000")
         .setFooter("tickets!| Dutch Defence Corporation ")
         .setTimestamp()
