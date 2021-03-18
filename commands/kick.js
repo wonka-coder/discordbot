@@ -23,33 +23,6 @@ module.exports.run = async (client, message, args) => {
                 return
               }
 
-              let filter = m => m.author.id === message.author.id
-              message.channel.send(`Do you want ${target} kick the server for ${reason} \`YES\` / \`NO\``).then(() => {
-                message.channel.awaitMessages(filter, {
-                    max: 1,
-                    time: 30000,
-                    errors: ['time']
-                  })
-                  .then(message => {
-                    message = message.first()
-                    if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-                      target.kick(target, { dagen:1, Reden: reason}).catch(err => {
-                        if (err) return message.channel.send(`error : ${err}`);
-                      });
-
-                      message.reply("Successfully!");
-                    } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
-                       message.reply("kicked canceled");
-                    } else {
-                      message.channel.send(`Command stopped`)
-                    }
-                  })
-                  .catch(collected => {
-                      message.channel.send('time over');
-                  });
-
-              })
-
                   args.shift()
               const guildId = message.guild.id
               const userId = target.id
@@ -59,7 +32,7 @@ module.exports.run = async (client, message, args) => {
                 timestamp: new Date().getTime(),
                 reason,
               }
-
+              target.kick()
               await mongo().then(async (mongoose) => {
                 try {
                   await kickSchema.findOneAndUpdate(
