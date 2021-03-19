@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
               var embed = new discord.MessageEmbed()
     .setColor("#ff0000")
     .setThumbnail(target.user.displayAvatarURL)
-    .setFooter("his message was sent automatically because you received a ban in Dutch Defence Corporation. You can block the bot if you wish to stop receiving these messages")
+    .setFooter("BANNED LOGS")
     .setTimestamp()
     .setDescription(`** banned:** ${target} (${target.id})
     **banned by:** ${message.author}
