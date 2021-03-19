@@ -36,7 +36,7 @@ module.exports.run = async (client, message, args) => {
               if (!target) return message.reply("user cannot be found!");
               var embed = new discord.MessageEmbed()
     .setColor("#ff0000")
-    .setThumbnail(target.user.displayAvatarURL)
+    .setThumbnail("https://imgur.com/lCrEqtv")
     .setFooter("BANNED LOGS")
     .setTimestamp()
     .setDescription(`** banned:** ${target} (${target.id})
@@ -51,8 +51,8 @@ module.exports.run = async (client, message, args) => {
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
  .setColor("#ff0000")
- .setThumbnail(target.user.displayAvatarURL)
- .setFooter(message.member.displayName, message.author.displayAvatarURL)
+ .setThumbnail(("https://imgur.com/lCrEqtv")
+ .setFooter(`${message.member.displayName}`, message.author.displayAvatarURL({dynamic: true, format: 'png'}))
  .setTimestamp()
  .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
 
