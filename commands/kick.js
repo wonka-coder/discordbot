@@ -73,7 +73,7 @@ module.exports.run = async (client, message, args) => {
                       guildId,
                       userId,
                       $push: {
-                        kicks: kicked,
+                        kick: kicked,
                       },
                     },
                     {
