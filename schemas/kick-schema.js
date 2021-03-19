@@ -9,10 +9,10 @@ const kickSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  kicks: {
+  kick: {
     type: [Object],
     required: true,
   },
 })
 
-module.exports = mongoose.model('kicks', kickSchema)
+module.exports = mongoose.model('kick', kickSchema)
