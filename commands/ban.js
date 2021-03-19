@@ -36,10 +36,10 @@ module.exports.run = async (client, message, args) => {
               if (!target) return message.reply("user cannot be found!");
               var embed = new discord.MessageEmbed()
     .setColor("#ff0000")
-    .setThumbnail(User.user.displayAvatarURL)
+    .setThumbnail(target.user.displayAvatarURL)
     .setFooter("his message was sent automatically because you received a ban in Dutch Defence Corporation. You can block the bot if you wish to stop receiving these messages")
     .setTimestamp()
-    .setDescription(`** banned:** ${User} (${User.id})
+    .setDescription(`** banned:** ${target} (${target.id})
     **banned by:** ${message.author}
     **reason: ** ${reason}`);
     var channel = message.member.guild.channels.cache.get("801837510820757514");
@@ -51,13 +51,13 @@ module.exports.run = async (client, message, args) => {
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
  .setColor("#ff0000")
- .setThumbnail(User.user.displayAvatarURL)
+ .setThumbnail(target.user.displayAvatarURL)
  .setFooter(message.member.displayName, message.author.displayAvatarURL)
  .setTimestamp()
  .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
 
    let filter = m => m.author.id === message.author.id
-   message.channel.send(`Do you want ${User} banned from the server for ${reason} \`YES\` / \`NO\``).then(() => {
+   message.channel.send(`Do you want ${target} banned from the server for ${reason} \`YES\` / \`NO\``).then(() => {
      message.channel.awaitMessages(filter, {
          max: 1,
          time: 30000,
@@ -106,5 +106,5 @@ module.exports.run = async (client, message, args) => {
               })
             },
   exports.config = {
-    aliases: ["KICK", "KICK_MEMBER"]
+    aliases: ["BAN", "BAN_MEMBER"]
   }
