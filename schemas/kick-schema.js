@@ -15,4 +15,4 @@ const kickSchema = mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('kick', kickSchema)
+module.exports = mongoose.model('kicks', kickSchema)

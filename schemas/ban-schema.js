@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const kickSchema = mongoose.Schema({
+const banSchema = mongoose.Schema({
   guildId: {
     type: String,
     required: true,
@@ -9,10 +9,10 @@ const kickSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  kicks: {
+  ban: {
     type: [Object],
     required: true,
   },
 })
 
-module.exports = mongoose.model('kicks', kickSchema)
+module.exports = mongoose.model('bans', banSchema)
