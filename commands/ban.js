@@ -56,26 +56,25 @@ module.exports.run = async (client, message, args) => {
  .setTimestamp()
  .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
 
-              let filter = m => m.author.id === message.author.id
-              message.channel.send(`Do you want ${target} BAN the server for ${reason} \`YES\` / \`NO\``).then(() => {
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 30000,
-                  errors: ['time']
-                })
-                .then(message => {
-            message = message.first()
-              if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-                  target.send(dmembed).then(() =>
-                target.kick(target, { dagen:1, Reden: reason}).catch(err => {
-                  if (err) return message.channel.send(`error : ${err}`);
-                });
-
+   let filter = m => m.author.id === message.author.id
+   message.channel.send(`Do you want ${User} banned from the server for ${reason} \`YES\` / \`NO\``).then(() => {
+     message.channel.awaitMessages(filter, {
+         max: 1,
+         time: 30000,
+         errors: ['time']
+       })
+       .then(message => {
+         message = message.first()
+         if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
+           target.send(dmembed).then(() =>
+           target.ban(target, { dagen:1, Reden: reason})).catch(err => {
+             if (err) return message.channel.send(`error : ${err}`);
+           });
            message.reply(embed);
          } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
-            message.reply("banned canceled");
+            message.reply("ban canceled!");
          } else {
-           message.channel.send(`Command stopped`)
+           message.channel.send(`command stopped`)
          }
        })
        .catch(collected => {
@@ -83,7 +82,6 @@ module.exports.run = async (client, message, args) => {
        });
 
    })
-
               await mongo().then(async (mongoose) => {
                 try {
                   await banSchema.findOneAndUpdate(
