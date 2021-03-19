@@ -51,10 +51,10 @@ module.exports.run = async (client, message, args) => {
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
  .setColor("#ff0000")
- .setThumbnail(("https://imgur.com/lCrEqtv")
+ .setThumbnail("https://imgur.com/lCrEqtv")
  .setFooter(`BANNED BITCH`)
  .setTimestamp()
- .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`));
+ .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
 
    let filter = m => m.author.id === message.author.id
    message.channel.send(`Do you want ${target} banned from the server for ${reason} \`YES\` / \`NO\``).then(() => {
