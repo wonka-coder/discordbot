@@ -46,7 +46,7 @@ module.exports.run = async (client, message, args) => {
 
     if (!channel) return;
 
-    channel.send(embed);
+    channel.send("Successfully banned!");
 
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
