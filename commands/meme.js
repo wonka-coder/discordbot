@@ -5,7 +5,7 @@ const client = new discord.Client();
 
 exports.run = (client, message, args) => {
 
-fetch('https://www.reddit.com/r/memes/random/.json').then(resp => resp.json()).then(respMeme => {
+fetch('https://www.reddit.com/r/QuceeHumor/random.json').then(resp => resp.json()).then(respMeme => {
 
 var permaLink = respMeme[0].data.children[0].data.permaLink;
 var memeUrl = `https://www.reddit.com${permaLink}`;
