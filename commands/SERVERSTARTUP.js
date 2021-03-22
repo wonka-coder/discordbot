@@ -7,6 +7,10 @@ module.exports.run = async (client, message, args) => {
 
     if(message && message.deletable) message.delete().catch(e => {});
 
+    if (!message.member.roles.cache.some(role => role.name === 'TRIAL MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:: ``TRIAL MODERATOR PERM``!").then (message =>{
+      message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
+
+
     var gameUrl = "https://www.roblox.com/games/6285403014/Den-Helder-Marinebase?refPageId=609a99e0-1575-42b5-afb4-c917fdc34c86";
     var thum = "https://imgur.com/lCrEqtv.png";
 
