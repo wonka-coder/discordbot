@@ -3,6 +3,7 @@ const discord = require("discord.js")
 const client = new discord.Client();
 
 exports.run = async (client, message, member, author ) => {
+   guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Member"));
     myGuild = client.guilds.cache.get("796297446786334720");
     let memberCount = myGuild.memberCount;
     setInterval(function () {
