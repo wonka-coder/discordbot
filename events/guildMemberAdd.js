@@ -2,7 +2,7 @@ const discord = require("discord.js")
 
 const client = new discord.Client();
 
-exports.run = async (client, message, member, author, guild ) => {
+exports.run = async (client, message, member, guild ) => {
   var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Member");
   member.roles.add(roleMember);
     myGuild = client.guilds.cache.get("796297446786334720");
