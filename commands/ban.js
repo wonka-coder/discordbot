@@ -6,7 +6,7 @@ const client = new discord.Client();
 
 const mongo = require('.././mongo')
 const banSchema = require('.././schemas/ban-schema')
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, channel) => {
   if(message && message.deletable) message.delete().catch(e => {});
 
     if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')) return message.react("❌"), message.reply("you don't have the role:'MODERATOR PERM'!").then (message =>{
