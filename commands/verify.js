@@ -7,6 +7,7 @@ module.exports.run = async (client, message, args) => {
 
 if(message && message.deletable) message.delete().catch(e => {});
 
+
 var verify = "798533797205377065";
 
   let msg = await message.channel.send("Awaiting Prompt"); // Send a message for awaiting.
@@ -72,7 +73,9 @@ rbx.getStatus(foundId).then(status => { //Check status
 .setFooter("Verifying..")
 .setTimestamp()
                msg.channel.send(verified) // Sent if user has put code
-              message.member.roles.add(message.guild.roles.cache.find(r => r.name == "✔️")) // Add the users role
+              message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Member"))
+              message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "New Member"))
+               // Add the users role
               message.member.setNickname(m.content) // Sets the users nickname
 
 

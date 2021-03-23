@@ -3,7 +3,7 @@ const discord = require("discord.js")
 const client = new discord.Client();
 
 exports.run = async (client, member, guild ) => {
-  var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Member");
+  var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "New Member");
   member.roles.add(roleMember);
     myGuild = client.guilds.cache.get("796297446786334720");
     let memberCount = myGuild.memberCount;
