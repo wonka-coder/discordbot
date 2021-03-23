@@ -34,13 +34,6 @@ module.exports.run = async (client, message, args, channel) => {
                 reason,
               }
               if (!target) return message.reply("user cannot be found!");
-
-              var channelEmbed = new discord.MessageEmbed()
-              .setColor('RANDOM')
-              .setThumbnail("https://imgur.com/lCrEqtv.png")
-              .setDescription("Successfully banned! Check Logs for te reason.")
-              message.channel.send(channelEmbed)
-
     var logEmbed = new discord.MessageEmbed()
     .setColor("#ff0000")
     .setThumbnail("https://imgur.com/lCrEqtv.png")
@@ -82,7 +75,7 @@ module.exports.run = async (client, message, args, channel) => {
          }
        })
        .catch(collected => {
-           message.channel.send('time over');
+           message.channel.send('Successfully');
        });
 
    })
