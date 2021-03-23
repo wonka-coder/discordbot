@@ -41,6 +41,7 @@ module.exports.run = async (client, message, args) => {
               .setTimestamp()
               .setDescription("Successfully banned! Check Logs for te reason.")
               .setfooter("BANNED BITCHS")
+              channel.send(channelEmbed)
 
     var logEmbed = new discord.MessageEmbed()
     .setColor("#ff0000")
