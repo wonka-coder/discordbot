@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
     .setDescription(`** banned:** ${target} (${target.id})
     **banned by:** ${message.author}
     **reason: ** ${reason}`);
-    var bannedLogs = messageDelete.guild.channels.find(x => x.name === "den-helderbot-logs");
+    var bannedLogs = message.guild.channels.cache.find(x => x.name === "den-helderbot-logs");
     bannedLogs.send(logEmbed);
 
     channel.send("Successfully banned!");
