@@ -19,8 +19,8 @@ module.exports.run = async (client, message, args) => {
     .setThumbnail(`${thum}`)
     .setURL(`${gameUrl}`)
     .setColor('RANDOM')
-    .setDescription(`Hello people! The server is open! Come & join the server. Make some good roleplays! This Server Start Up is run by ${message.author}! Press "DDC | Start up!" so you can enter the game or press on the link : ${gameUrl}`);
-    message.channel.send(embed).then(message.channel.send("@here"))
+    .setDescription(`Hello people! The server is open! Come & join the server. Make some good roleplays! This Server Start Up is run by ${message.author}! Press "DDC | Start up!" so you can enter the game or press on the link!`);
+    message.channel.send(embed).then(message.channel.send(`@here, ${gameUrl}`))
   }
 
 module.exports.help = {
