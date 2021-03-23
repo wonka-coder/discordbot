@@ -35,6 +35,13 @@ module.exports.run = async (client, message, args) => {
               }
               if (!target) return message.reply("user cannot be found!");
 
+              var channelEmbed = new discord.MessageEmbed()
+              .setColor('RANDOM')
+              .setThumbnail("https://imgur.com/lCrEqtv.png")
+              .setTimestamp()
+              .setDescription("Successfully banned! Check Logs for te reason.")
+              .setfooter("BANNED BITCHS")
+
     var logEmbed = new discord.MessageEmbed()
     .setColor("#ff0000")
     .setThumbnail("https://imgur.com/lCrEqtv.png")
@@ -66,7 +73,7 @@ module.exports.run = async (client, message, args) => {
          if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
            target.send(dmembed).then(() =>
            target.ban(target, { dagen:1, Reden: reason})).catch(err => {
-             if (err) return message.channel.send(`error : ${err}`).then(message.reply("Successfully"));
+             if (err) return message.channel.send(`error : ${err}`);
            });
            message.reply(embed);
          } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
