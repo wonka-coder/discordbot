@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args, channel) => {
               .setColor('RANDOM')
               .setThumbnail("https://imgur.com/lCrEqtv.png")
               .setDescription("Successfully banned! Check Logs for te reason.")
-              channel.send(channelEmbed)
+              message.channel.send(channelEmbed)
 
     var logEmbed = new discord.MessageEmbed()
     .setColor("#ff0000")
