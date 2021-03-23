@@ -7,14 +7,11 @@ module.exports.run = async (client, message, args) => {
 
 if(message && message.deletable) message.delete().catch(e => {});
 
+if (!message.member.roles.cache.some(role => role.name === 'New Member')) return message.react("❌"), message.reply("you don't have the role:: ``New Member``!").then (message =>{
+  message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
-var verify = "816028812335644673";
 
   let msg = await message.channel.send("Awaiting Prompt"); // Send a message for awaiting.
-
- if(verify === message.channel.id){} else {
-             return message.channel.send("You can not verify here! ")
-         }
 
   function makeid() {
     var text = "";
