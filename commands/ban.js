@@ -38,9 +38,9 @@ module.exports.run = async (client, message, args) => {
               var channelEmbed = new discord.MessageEmbed()
               .setColor('RANDOM')
               .setThumbnail("https://imgur.com/lCrEqtv.png")
+              .setfooter("BANNED BITCHS")
               .setTimestamp()
               .setDescription("Successfully banned! Check Logs for te reason.")
-              .setfooter("BANNED BITCHS")
               channel.send(channelEmbed)
 
     var logEmbed = new discord.MessageEmbed()
