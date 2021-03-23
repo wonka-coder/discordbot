@@ -34,24 +34,24 @@ module.exports.run = async (client, message, args) => {
                 reason,
               }
               if (!target) return message.reply("user cannot be found!");
-              var embed = new discord.MessageEmbed()
+
+    var logEmbed = new discord.MessageEmbed()
     .setColor("#ff0000")
-    .setThumbnail("https://imgur.com/lCrEqtv")
+    .setThumbnail("https://imgur.com/lCrEqtv.png")
     .setFooter("BANNED LOGS")
     .setTimestamp()
     .setDescription(`** banned:** ${target} (${target.id})
     **banned by:** ${message.author}
     **reason: ** ${reason}`);
-    var channel = message.member.guild.channels.cache.get("801837510820757514");
-
-    if (!channel) return;
+    var bannedLogs = messageDelete.guild.channels.find(x => x.name === "den-helderbot-logs");
+    bannedLogs.send(logEmbed);
 
     channel.send("Successfully banned!");
 
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
  .setColor("#ff0000")
- .setThumbnail("https://imgur.com/lCrEqtv")
+ .setThumbnail("https://imgur.com/lCrEqtv.png")
  .setFooter(`BANNED BITCH`)
  .setTimestamp()
  .setDescription(` you have been banned for the following reason: **${reason}** \n You can get an unban by clicking the link below! \n *https://forms.gle/souGHuLT83G1URVu5*`);
@@ -68,7 +68,7 @@ module.exports.run = async (client, message, args) => {
          if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
            target.send(dmembed).then(() =>
            target.ban(target, { dagen:1, Reden: reason})).catch(err => {
-             if (err) return message.channel.send(`error : ${err}`);
+             if (err) return message.channel.send(`error : ${err}`).then(message.reply("Successfully"));
            });
            message.reply(embed);
          } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
