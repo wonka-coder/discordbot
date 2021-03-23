@@ -7,11 +7,14 @@ module.exports.run = async (client, message, args) => {
 
 if(message && message.deletable) message.delete().catch(e => {});
 
-if (!message.member.roles.cache.some(role => role.name === 'New Member')) return message.react("❌"), message.reply("you don't have the role:: ``New Member``!").then (message =>{
-  message.delete({ timeout: 10000 })}), message.delete({ timeout: 3000 });
 
+var verify = "798533797205377065";
 
   let msg = await message.channel.send("Awaiting Prompt"); // Send a message for awaiting.
+
+ if(verify === message.channel.id){} else {
+             return message.channel.send("You can not verify here! ")
+         }
 
   function makeid() {
     var text = "";
@@ -70,8 +73,8 @@ rbx.getStatus(foundId).then(status => { //Check status
 .setFooter("Verifying..")
 .setTimestamp()
                msg.channel.send(verified) // Sent if user has put code
-              message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Member"))
-              message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "New Member"))
+               message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Member"))
+               message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "New Member"))
                // Add the users role
               message.member.setNickname(m.content) // Sets the users nickname
 
