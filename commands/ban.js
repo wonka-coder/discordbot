@@ -90,7 +90,7 @@ module.exports.run = async (client, message, args, channel) => {
                       guildId,
                       userId,
                       $push: {
-                        bans: banned,
+                        ban: banned,
                       },
                     },
                     {
