@@ -76,7 +76,7 @@ rbx.getStatus(foundId).then(status => { //Check status
               message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Member"))
               message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "New Member"))
                // Add the users role
-              message.member.setNickname(m.content).then.message.channel.bulkDelete(); // Sets the users nickname
+              message.member.setNickname(m.content).then(message.bulkDelete()) // Sets the users nickname
 
 
                } else {
