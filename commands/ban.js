@@ -46,8 +46,6 @@ module.exports.run = async (client, message, args) => {
     var bannedLogs = message.guild.channels.cache.find(x => x.name === "den-helderbot-logs");
     bannedLogs.send(logEmbed);
 
-    channel.send("Successfully banned!");
-
     var dmembed = new discord.MessageEmbed()
  .setTitle("You have been banned from ***Dutch Defence Corporation***!")
  .setColor("#ff0000")
