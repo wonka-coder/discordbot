@@ -16,11 +16,11 @@ module.exports.run = async (client, message, args) => {
       }
 
           args.shift()
-          message.reply("Successfully!")
+          message.reply("Successfully!").then(member.roles.add("warned"), member.roles.remove("Member"))
       const guildId = message.guild.id
       const userId = target.id
       const reason = args.slice(1).join(' ')
-
+      target.send(`You have been warned for ${reason}!  `)
       const warning = {
         author: message.member.user.tag,
         timestamp: new Date().getTime(),
