@@ -17,8 +17,9 @@ module.exports.run = async (client, message, args) => {
 
           args.shift()
           message.reply("Successfully!")
-          message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Warned"))
-          message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "Member"))
+          
+          var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
+          member.roles.add(roleMember);
       const guildId = message.guild.id
       const userId = target.id
       const reason = args.slice(1).join(' ')
