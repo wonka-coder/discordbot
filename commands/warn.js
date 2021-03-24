@@ -8,7 +8,7 @@ const mongo = require('.././mongo')
 const warnSchema = require('.././schemas/warn-schema')
 
 
-module.exports.run = async (client, member, args) => {
+module.exports.run = async (member, message, args) => {
   const target = message.mentions.users.first()
       if (!target) {
         message.reply('Please specify someone to warn.')
