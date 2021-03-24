@@ -9,8 +9,8 @@ const warnSchema = require('.././schemas/warn-schema')
 
 
 module.exports.run = async (member, message, args) => {
-        var roleMember = member.roles.cache.find(roleMember => roleMember.name === "Warned");
-              var roleMember2 = member.roles.cache.find(roleMember2 => roleMember2.name === "Member");
+        var roleMember = member.roles.find(roleMember => roleMember.name === "Warned");
+              var roleMember2 = member.roles.find(roleMember2 => roleMember2.name === "Member");
   const target = message.mentions.users.first()
       if (!target) {
         message.reply('Please specify someone to warn.')
