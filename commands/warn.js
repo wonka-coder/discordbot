@@ -8,7 +8,7 @@ const mongo = require('.././mongo')
 const warnSchema = require('.././schemas/warn-schema')
 
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, member, args) => {
   const target = message.mentions.users.first()
       if (!target) {
         message.reply('Please specify someone to warn.')
@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
 
           args.shift()
           message.reply("Successfully!")
-          
+
           var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
           member.roles.add(roleMember);
       const guildId = message.guild.id
