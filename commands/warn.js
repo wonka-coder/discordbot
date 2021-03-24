@@ -9,6 +9,8 @@ const warnSchema = require('.././schemas/warn-schema')
 
 
 module.exports.run = async (member, message, args) => {
+        var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
+              var roleMember2 = member.guild.roles.cache.find(roleMember2 => roleMember2.name === "Member");
   const target = message.mentions.users.first()
       if (!target) {
         message.reply('Please specify someone to warn.')
@@ -21,8 +23,10 @@ module.exports.run = async (member, message, args) => {
       const userId = target.id
       const reason = args.slice(1).join(' ')
       target.send(`You have been warned for ${reason}!  `)
+
       var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
       member.roles.add(roleMember);
+      member.roles.remove(roleMember2);
       const warning = {
         author: message.member.user.tag,
         timestamp: new Date().getTime(),
