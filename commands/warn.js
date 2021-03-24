@@ -15,8 +15,8 @@ module.exports.run = async (member, message, args) => {
         message.reply('Please specify someone to warn.')
         return
       }
-      var roleMember = target.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
-      var roleMember2 = target.guild.roles.cache.find(roleMember2 => roleMember2.name === "Member");
+      var roleMember = target.roles.find(roleMember => roleMember.name === "Warned");
+      var roleMember2 = target.roles.find(roleMember2 => roleMember2.name === "Member");
           args.shift()
           message.reply("Successfully!")
       const guildId = message.guild.id
