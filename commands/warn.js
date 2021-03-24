@@ -17,13 +17,12 @@ module.exports.run = async (client, message, member, args) => {
 
           args.shift()
           message.reply("Successfully!")
-
-          var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
-          member.roles.add(roleMember);
       const guildId = message.guild.id
       const userId = target.id
       const reason = args.slice(1).join(' ')
       target.send(`You have been warned for ${reason}!  `)
+      var roleMember = member.guild.roles.cache.find(roleMember => roleMember.name === "Warned");
+      member.roles.add(roleMember);
       const warning = {
         author: message.member.user.tag,
         timestamp: new Date().getTime(),
