@@ -1,6 +1,9 @@
 const prefix = "?"
 const discord = require("discord.js")
 
+
+var message1 = "Your behavior was noticed by our moderators, and you have received a warning for this behavior. Make sure to obey our rules at any time."
+
 const client = new discord.Client();
  exports.run = async(client, message) => {
   if (message.author.bot) return;
@@ -25,5 +28,15 @@ message.reply(" the tickets are closed! | de tickets zijn dicht!"), message.dele
         .setTimestamp()
         .setDescription(`the tickets are closed! if you have questions please send a message to <@464803075844997131> !  `)
         message.channel.send(embed);
+  }
+  if (message.channel.id === "824242554014531614") {
+    var embed = new discord.MessageEmbed()
+    .setTitle(`DDC | You have been warned! `)
+    .setColor("#42f598")
+    .setDescription(`${message1}`);
+    message.channel.send(embed).then(m => {
+      m.react('✅');
+    });
+
   }
 }
