@@ -2,7 +2,7 @@ const prefix = "?"
 const discord = require("discord.js")
 
 
-var message1 = "Your behavior was noticed by our moderators, and you have received a warning for this behavior. Make sure to obey our rules at any time."
+var message1 = "Your behavior was noticed by our moderators, and you have received a warning for this behaviour. To re-enter back in the server, please tick this icon ' ✅ ' below. Make sure to obey our rules at any time."
 
 const client = new discord.Client();
  exports.run = async(client, message) => {
@@ -34,6 +34,7 @@ message.reply(" the tickets are closed! | de tickets zijn dicht!"), message.dele
     .setTitle(`DDC | You have been warned! `)
     .setColor("#42f598")
     .setDescription(`${message1}`);
+    .s
     message.channel.send(embed).then(m => {
       m.react('✅');
     });
