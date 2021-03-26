@@ -23,8 +23,8 @@ module.exports.run = async (member, message, args) => {
       const reason = args.slice(1).join(' ')
       target.send(`You have been warned for ${reason}!  `)
 
-      message.target.roles.add(message.guild.roles.cache.find(r => r.name == "Warned"))
-      message.target.roles.remove(message.guild.roles.cache.find(r => r.name == "Member"))
+      target.roles.add(guild.roles.cache.find(r => r.name == "Warned"))
+      target.roles.remove(guild.roles.cache.find(r => r.name == "Member"))
       const warning = {
         author: message.member.user.tag,
         timestamp: new Date().getTime(),
