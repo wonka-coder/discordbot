@@ -34,7 +34,6 @@ message.reply(" the tickets are closed! | de tickets zijn dicht!"), message.dele
     .setTitle(`DDC | You have been warned! `)
     .setColor("#42f598")
     .setDescription(`${message1}`);
-    .s
     message.channel.send(embed).then(m => {
       m.react('✅');
     });
