@@ -15,8 +15,7 @@ module.exports.run = async (member, message, args) => {
         message.reply('Please specify someone to warn.')
         return
       }
-      var roleMember = target.roles.find(roleMember => roleMember.name === "Warned");
-      var roleMember2 = target.roles.find(roleMember2 => roleMember2.name === "Member");
+
           args.shift()
           message.reply("Successfully!")
       const guildId = message.guild.id
@@ -24,8 +23,8 @@ module.exports.run = async (member, message, args) => {
       const reason = args.slice(1).join(' ')
       target.send(`You have been warned for ${reason}!  `)
 
-      target.roles.add(roleMember);
-      target.roles.remove(roleMember2);
+      message.member.roles.add(message.guild.roles.cache.find(r => r.name == "Warned"))
+      message.member.roles.remove(message.guild.roles.cache.find(r => r.name == "Member"))
       const warning = {
         author: message.member.user.tag,
         timestamp: new Date().getTime(),
