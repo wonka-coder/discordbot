@@ -25,8 +25,8 @@ module.exports.run = async (client, message, args) => {
 
        let reply = `Previous warnings for <@${userId}>:\n\n`
 
-       for (const warning of results.warning) {
-         const { author, timestamp, reason } = warning
+       for (const warnings of results.warnings) {
+         const { author, timestamp, reason } = warnings
 
          reply += `By ${author} on ${new Date(
            timestamp

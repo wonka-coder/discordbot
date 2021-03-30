@@ -9,7 +9,7 @@ const warnSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  warning: {
+  warnings: {
     type: [Object],
     required: true,
   },
