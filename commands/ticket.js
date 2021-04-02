@@ -30,7 +30,10 @@ exports.run = async (client, message, args) => {
   			type: 'text',
   		}).then(async channel => {
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
-  			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. If you would like to close this ticket please run \`?close\``);
+  			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. Select your language :flag_us: = English / :flag_nl = nederlands`).then(
+          message.react(':flag_us:'), message.edit("This user wants to be served in English");
+          message.react(':flag_nl:'), message.edit(" Deze gebruik wilt geholpen worden in het nederlands.")
+        )
   			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
   			if(logchannel) {
   				logchannel.send(`Ticket ${message.author.id} created. Click the following to veiw <#${channel.id}>`);
