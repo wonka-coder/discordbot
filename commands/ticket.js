@@ -5,8 +5,6 @@ const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
 
-const supportRole = message.guild.roles.cache.get('806090560297238569');
-
   var ticketC = "798533810584551464";
 
   if(ticketC === message.channel.id){} else {
@@ -27,13 +25,10 @@ const supportRole = message.guild.roles.cache.get('806090560297238569');
   					id: message.guild.roles.everyone,
   					deny: ['VIEW_CHANNEL'],
   				},
-          {
-            id: message.guild.roles.supportRole,
-            allow: ['VIEW_CHANNEL'],
-          },
   			],
   			type: 'text',
   		}).then(async channel => {
+        message.channel.overwritePermissions('806090560297238569', { SEND_MESSAGES: true, VIEW_CHANNEL: false});
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
   			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. If you would like to close this ticket please run \`?close\``);
   			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
