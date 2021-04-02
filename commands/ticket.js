@@ -46,7 +46,7 @@ var embedPrompt = new discord.MessageEmbed()
 
         message.channel.send(embedPrompt).then(async msg => {
 
-                    var emoji = await promptMessage(":flag_nl:", ":flag_us:"");
+              var emoji = await promptMessage(msg, message.author,  [":flag_nl", ":flag_us"]);
 
                     if (emoji === " :flag_nl:") {
 
