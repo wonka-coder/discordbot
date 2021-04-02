@@ -16,18 +16,17 @@ exports.run = async (client, message, args) => {
   		}
 
   		message.guild.channels.create(`ticket-${message.author.id}`, {
-  			permissionOverwrites: [
-  				{
-  					id: message.author.id,
-  					allow: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
-  				},
-  				{
-  					id: message.guild.roles.everyone,
-  					deny: ['VIEW_CHANNEL'],
-  				},
-  			],
-  			type: 'text',
-  		}).then(async channel => {
+        // Put permissions for everyone
+        settedParent.overwritePermissions(message.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
+        settedParent.overwritePermissions(message.guild.roles.find('name', "@support"), { "VIEW_CHANNEL": true });
+        // Put permission by the user that created the ticket
+        settedParent.overwritePermissions(message.author, {
+
+            "READ_MESSAGES": true, "SEND_MESSAGES": true,
+            "ATTACH_FILES": true, "CONNECT": true,
+            "CREATE_INSTANT_INVITE": false, "ADD_REACTIONS": true
+
+        }).then(async channel => {
         message.channel.overwritePermissions('806090560297238569', { SEND_MESSAGES: true, VIEW_CHANNEL: false});
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
   			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. If you would like to close this ticket please run \`?close\``);
