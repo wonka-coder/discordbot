@@ -59,8 +59,7 @@ var embedPrompt = new discord.MessageEmbed()
 
                     }
 
-                });
-            }
+                }); 
   			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
   			if(logchannel) {
   				logchannel.send(`Ticket ${message.author.id} created. Click the following to veiw <#${channel.id}>`);
