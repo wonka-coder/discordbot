@@ -4,6 +4,9 @@ const discord = require("discord.js");
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
+
+const supportRole = message.guild.roles.get('806090560297238569');
+
   var ticketC = "798533810584551464";
 
   if(ticketC === message.channel.id){} else {
@@ -25,7 +28,7 @@ exports.run = async (client, message, args) => {
   					deny: ['VIEW_CHANNEL'],
   				},
           {
-            id: message.guild.roles.support,
+            id: message.guild.roles.supportRole,
             allow: ['VIEW_CHANNEL'],
           },
   			],
