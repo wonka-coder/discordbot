@@ -4,7 +4,7 @@ var emoij = ("flag_nl", "flag_us");
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
-
+var emoij = ("flag_nl", "flag_us");
   var embedNL = new discord.MessageEmbed()
 .setTitle("Ticket systeem |  ***Dutch Defence Corporation***!")
 .setColor("#ff0000")
@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
   			type: 'text',
   		}).then(async channel => {
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
-  			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. Select your language :flag_us: = English / :flag_nl = nederlands`)
+  			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. Select your language :flag_us: = English / :flag_nl = nederlands`),
           message.react(':flag_us:');
           message.react(':flag_nl:');
         if (emoji === "flag_nl") {
