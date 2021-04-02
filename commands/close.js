@@ -1,6 +1,9 @@
 const discord = require("discord.js");
+
 const { MessageEmbed } = require('discord.js');
+
 const sourcebin = require('sourcebin_js');
+
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
