@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
   				},
           {
             id: message.guild.roles.support,
-            deny: ['VIEW_CHANNEL'],
+            allow: ['VIEW_CHANNEL'],
           },
   			],
   			type: 'text',
