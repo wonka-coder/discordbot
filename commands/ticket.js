@@ -17,8 +17,8 @@ exports.run = async (client, message, args) => {
 
   		message.guild.channels.create(`ticket-${message.author.id}`, {
         // Put permissions for everyone
-        overwritePermissions(message.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
-        overwritePermissions(message.guild.roles.find('name', "@support"), { "VIEW_CHANNEL": true });
+        overwritePermissions(message.guild.roles.cache.find('name', "@everyone"), { "READ_MESSAGES": false });
+        overwritePermissions(message.guild.roles.cache.find('name', "@support"), { "VIEW_CHANNEL": true });
         // Put permission by the user that created the ticket
         overwritePermissions(message.author, {
 
