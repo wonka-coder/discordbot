@@ -1,9 +1,17 @@
 const discord = require("discord.js");
-
+var emoij = ("flag_nl", "flag_us");
 
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
+
+  var embedNL = new discord.MessageEmbed()
+.setTitle("Ticket systeem |  ***Dutch Defence Corporation***!")
+.setColor("#ff0000")
+.setThumbnail("https://imgur.com/lCrEqtv.png")
+.setFooter(`Nederlands`)
+.setTimestamp()
+.setDescription(`Deze gebruiker wilt geholpen worden in het nederlands`);
 
 
   var ticketC = "798533810584551464";
@@ -31,9 +39,14 @@ exports.run = async (client, message, args) => {
   		}).then(async channel => {
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
   			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. Select your language :flag_us: = English / :flag_nl = nederlands`).then(
-          message.react(':flag_us:').then(message.edit("This user wants to be served in English"))
-          message.react(':flag_nl:').then(message.edit(" Deze gebruik wilt geholpen worden in het nederlands."))
+          message.react(':flag_us:');
+          message.react(':flag_nl:');
         )
+        if (emoji === "flag_nl") {
+
+          message.send(embedNL)
+
+        }
   			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
   			if(logchannel) {
   				logchannel.send(`Ticket ${message.author.id} created. Click the following to veiw <#${channel.id}>`);
