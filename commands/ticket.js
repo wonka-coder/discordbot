@@ -4,7 +4,7 @@ var emoij = ("flag_nl", "flag_us");
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
-var emoij = ("flag_nl", "flag_us");
+var emoij = (":flag_nl:", ":flag_us:");
   var embedNL = new discord.MessageEmbed()
 .setTitle("Ticket systeem |  ***Dutch Defence Corporation***!")
 .setColor("#ff0000")
@@ -12,7 +12,13 @@ var emoij = ("flag_nl", "flag_us");
 .setFooter(`Nederlands`)
 .setTimestamp()
 .setDescription(`Deze gebruiker wilt geholpen worden in het nederlands`);
-
+var embedPrompt = new discord.MessageEmbed()
+.setTitle("select your language | selecteer je taal")
+.setColor("#ff0000")
+.setThumbnail("https://imgur.com/lCrEqtv.png")
+.setFooter(`Ticket promptMessage`)
+.setTimestamp()
+.setDescription(`:flag_us: = English | :flag_nl: = nederlands`);
 
   var ticketC = "798533810584551464";
 
@@ -38,14 +44,23 @@ var emoij = ("flag_nl", "flag_us");
   			type: 'text',
   		}).then(async channel => {
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
-  			channel.send(`Hi ${message.author}, welcome to your ticket! Please be patient, we will be with you shortly. Select your language :flag_us: = English / :flag_nl = nederlands`),
-          message.react(':flag_us:');
-          message.react(':flag_nl:');
-        if (emoji === "flag_nl") {
 
-          message.send(embedNL)
+        message.channel.send(embedPrompt).then(async msg => {
 
-        }
+                    var emoji = await promptMessage();
+
+                    if (emoji === " :flag_nl:") {
+
+                        message.reply(embedNL);
+
+                    } else if (emoji === ":flag_us:") {
+
+                        message.reply("English")
+
+                    }
+
+                });
+            }
   			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
   			if(logchannel) {
   				logchannel.send(`Ticket ${message.author.id} created. Click the following to veiw <#${channel.id}>`);
