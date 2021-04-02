@@ -6,7 +6,7 @@ const client = new discord.Client();
 exports.run = async (client, message, args) => {
           if(message.channel.name.includes('ticket-')) {
           			const member = message.guild.members.cache.get(message.channel.name.split('ticket-').join(''));
-          			  if (!message.member.roles.cache.some(role => role.name === 'TRIAL MODERATOR PERM')) || message.channel.name === `ticket-${message.author.id}`) {
+          			if (!message.member.roles.cache.some(role => role.name === 'MODERATOR PERM')), message.channel.name === `ticket-${message.author.id}`) {
           				message.channel.messages.fetch().then(async (messages) => {
           					const output = messages.array().reverse().map(m => `${new Date(m.createdAt).toLocaleString('en-US')} - ${m.author.tag}: ${m.attachments.size > 0 ? m.attachments.first().proxyURL : m.content}`).join('\n');
 
