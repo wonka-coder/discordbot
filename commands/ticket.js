@@ -24,6 +24,10 @@ exports.run = async (client, message, args) => {
   					id: message.guild.roles.everyone,
   					deny: ['VIEW_CHANNEL'],
   				},
+          {
+            id: message.guild.roles.support,
+            deny: ['VIEW_CHANNEL'],
+          },
   			],
   			type: 'text',
   		}).then(async channel => {
