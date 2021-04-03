@@ -5,7 +5,7 @@ const client = new discord.Client();
 exports.run = async (client, message, args) => {
 
       // ID from the catogory channel tickets.
-      const categoryId = "644626077704257546";
+      const categoryId = "806092431698427984";
 
       // Get username
       var userName = message.author.username;
