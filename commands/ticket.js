@@ -1,69 +1,75 @@
 const discord = require("discord.js");
-var emoij = ("flag_nl", "flag_us");
 
 const client = new discord.Client();
 
 exports.run = async (client, message, args) => {
-  var embedNL = new discord.MessageEmbed()
-.setTitle("Ticket systeem |  ***Dutch Defence Corporation***!")
-.setColor("#ff0000")
-.setThumbnail("https://imgur.com/lCrEqtv.png")
-.setFooter(`Nederlands`)
-.setTimestamp()
-.setDescription(`Deze gebruiker wilt geholpen worden in het nederlands`);
-var embedPrompt = new discord.MessageEmbed()
-.setTitle("select your language | selecteer je taal")
-.setColor("#ff0000")
-.setThumbnail("https://imgur.com/lCrEqtv.png")
-.setFooter(`Ticket promptMessage`)
-.setTimestamp()
-.setDescription(`:flag_us: = English | :flag_nl: = nederlands`);
 
-  var ticketC = "798533810584551464";
+      // ID from the catogory channel tickets.
+      const categoryId = "644626077704257546";
 
-  if(ticketC === message.channel.id){} else {
-              return message.channel.send("You can not make a ticket here! ")
+      // Get username
+      var userName = message.author.username;
+      // Verkrijg discriminator
+      var userDiscriminator = message.author.discriminator;
+
+      // If ticket has been made
+      var bool = false;
+
+      // Checking if ticket has been made.
+      message.guild.channels.forEach((channel) => {
+
+          // If ticket has been made sent:
+          if (channel.name == userName.toLowerCase() + "-" + userDiscriminator) {
+
+              message.channel.send("You already made a ticket");
+
+              bool = true;
+
           }
 
-  if(message.guild.channels.cache.find(channel => channel.name === `ticket-${message.author.id}`)) {
-  			return message.reply('you already have a ticket, please close your exsisting ticket first before opening a new one!');
-  		}
+      });
 
-  		message.guild.channels.create(`ticket-${message.author.id}`, {
-  			permissionOverwrites: [
-  				{
-  					id: message.author.id,
-  					allow: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
-  				},
-  				{
-  					id: message.guild.roles.everyone,
-  					deny: ['VIEW_CHANNEL'],
-  				},
-  			],
-  			type: 'text',
-  		}).then(async channel => {
-  			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
+      // Ticket return code
+      if (bool == true) return;
 
-        message.send(embedPrompt).then(async msg => {
+      var embedCreateTicket = new discord.RichEmbed()
+          .setTitle("Hey, " + message.author.username)
+          .setFooter("Support channel will be made");
+          message.react(':flag_nl')
+          message.react('flag_us')
 
-              var emoji = await promptMessage(msg, message.author,  [":flag_nl", ":flag_us"]);
+      message.channel.send(embedCreateTicket);
 
-                    if (emoji === " :flag_nl:") {
+      // Create channel and put it in the right catogary
+      message.guild.createChannel(userName + "-" + userDiscriminator, "text").then((createdChan) => { // Maak kanaal
 
-                        message.reply(embedNL);
+          createdChan.setParent(categoryId).then((settedParent) => { // Zet kanaal in category.
 
-                    } else if (emoji === ":flag_us:") {
+              // Put permissions for everyone
+              settedParent.overwritePermissions(message.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
+              settedParent.overwritePermissions(message.guild.roles.find('name', "@Support"), { "VIEW_CHANNEL": true });
+              // Put permission by the user that created the ticket
+              settedParent.overwritePermissions(message.author, {
 
-                        message.reply("English")
+                  "READ_MESSAGES": true, "SEND_MESSAGES": true,
+                  "ATTACH_FILES": true, "CONNECT": true,
+                  "CREATE_INSTANT_INVITE": false, "ADD_REACTIONS": true
 
-                    }
+              });
 
-                });
-  			let logchannel = message.guild.channels.cache.find(channel => channel.name === `den-helderbot-logs`)
-  			if(logchannel) {
-  				logchannel.send(`Ticket ${message.author.id} created. Click the following to veiw <#${channel.id}>`);
-  			}
-  		});
+              var embedParent = new discord.RichEmbed()
+                  .setTitle("Hey, " + message.author.username.toString())
+                  .setDescription("Put down here your question");
+
+              settedParent.send(embedParent);
+          }).catch(err => {
+              message.channel.send("Something went wrong.");
+          });
+
+      }).catch(err => {
+          message.channel.send("Something went wrong.");
+      });
+
   	},
   exports.config = {
     aliases: ["ticket open", "everyone"]
