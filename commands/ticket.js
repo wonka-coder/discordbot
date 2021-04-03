@@ -44,7 +44,7 @@ var embedPrompt = new discord.MessageEmbed()
   		}).then(async channel => {
   			message.reply(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
 
-        message.channel.send(embedPrompt).then(async msg => {
+        message.send(embedPrompt).then(async msg => {
 
               var emoji = await promptMessage(msg, message.author,  [":flag_nl", ":flag_us"]);
 
